@@ -1,0 +1,31 @@
+svmlight-0.4/
+svmlight-0.4.tar.gz
+
+
+
+# .vscode/
+
+# Data
+*.tar
+NEG/
+POS/
+
+# Python
+*.pyc
+__pycache__/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Latex
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+.*.lb

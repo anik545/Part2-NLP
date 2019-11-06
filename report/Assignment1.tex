@@ -1,0 +1,82 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[parfill]{parskip}
+\usepackage{fullpage}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{blindtext}
+\usepackage{multicol}
+\bibliographystyle{plain}
+
+
+\title{
+  Natural Language Processing \\
+  \large Assignment 1}
+\author{Anik Roy (ar899)}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\begin{multicols}{2}
+  
+\section{Introduction}
+
+This report considers the problem of the positive or negative sentiment classification of reviews. We reimplement a subset of techniques used in Pang et al. (2002)\cite{pang2002thumbs}, specifically support vector machine (SVM) and Naive Bayes (NB) classifiers. The data used was a set of movie reviews given in the framework of an NLP course
+
+\section{Background}
+
+A bag of n-grams representation is used to classify documents. Pang et al. also choose some combinations of parameters to investigate the effect on accuracy of the final system, for example using unigrams or bigrams.
+
+\subsection{Naive Bayes}
+The Naive Bayes classifier assigns documents to a class based on the likelihood of it being in that class $c^{*} = \arg \max_{c}P(c | d)$. To get $P(c | d)$, we use Bayes Rule to derive:
+\[P_\mathrm{NB}(c | d) := \frac{P(c)(\prod^{m}_{i=1}P(f_{i} | c)^{n_{i}(d)})}{P(d)} \], 
+making the naive assumption that features are dependent only on class.
+
+\subsection{Support Vector Machines}
+SVMs are a type of classifier which treat each document as a vector of features. Training consists of finding a hyperplane to separate the two classes, and classifying documents by measuring distance to the hyperplane.
+
+We use Joachim's (1999) SVMlight package\footnote{\url{http://svmlight.joachims.org}} for training and testing.
+
+\section{Method}
+
+The systems described were reimplemented in python. Stemming was performed on words before converting to features, using the porter stemmer implemented in the nltk package\footnote{\url{https://www.nltk.org/_modules/nltk/stem/porter.html}}. 
+
+We consider different types of features - unigrams, bigrams, and unigrams + bigrams, as well as both presence and frequency. No feature cutoff was implemented.
+
+
+We use 10-fold stratified cross-validation, and dividing the data using round robin splitting. With 2000 documents (1000 positive, 1000 negative), and training on 9 folds (90\% of the documents) there are 446506 bigrams and 52556 unigrams.
+\end{multicols}
+
+\begin{table*}
+  \centering
+  \begin{tabular}{llllll}
+  \cline{1-4}
+  \multicolumn{1}{|l|}{\textbf{Features}}  & \multicolumn{1}{l|}{\textbf{frequency or presence?}} & \multicolumn{1}{l|}{\textbf{NB}} & \multicolumn{1}{l|}{\textbf{SVM}} &  &  \\ \cline{1-4}
+  \multicolumn{1}{|l|}{Unigrams}           & \multicolumn{1}{l|}{frequency}                       & \multicolumn{1}{l|}{}            & \multicolumn{1}{l|}{}             &  &  \\ \cline{1-4}
+  \multicolumn{1}{|l|}{Unigrams}           & \multicolumn{1}{l|}{presence}                        & \multicolumn{1}{l|}{}            & \multicolumn{1}{l|}{}             &  &  \\ \cline{1-4}
+  \multicolumn{1}{|l|}{Bigrams}            & \multicolumn{1}{l|}{presence}                        & \multicolumn{1}{l|}{}            & \multicolumn{1}{l|}{}             &  &  \\ \cline{1-4}
+  \multicolumn{1}{|l|}{Unigrams + Bigrams} & \multicolumn{1}{l|}{presence}                        & \multicolumn{1}{l|}{}            & \multicolumn{1}{l|}{}             &  &  \\ \cline{1-4}
+                                           &                                                      &                                  &                                   &  & 
+  \end{tabular}
+  \caption{Accuracies of systems with different feature types, finding the average over 10 fold cross validation}
+  \label{tab:my-table}
+  \end{table*}
+
+\begin{multicols}{2}
+\section{Results}
+\blindtext
+
+
+
+\section{Conclusions}
+
+\centerline{[wordcount: 500]\footnote{calculated using detex $|$ wc}}
+
+\end{multicols}
+
+\clearpage
+
+\bibliography{refs}
+
+
+\end{document}
