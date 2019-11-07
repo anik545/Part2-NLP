@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex out/Assignment1"] 1573084467 "out/Assignment1.aux" "out/Assignment1.bbl" "out/Assignment1" 1573085416
+["bibtex out/Assignment1"] 1573084467 "out/Assignment1.aux" "out/Assignment1.bbl" "out/Assignment1" 1573086543
   "/usr/local/texlive/2019/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "out/Assignment1.aux" 1573085416 2369 e9f85377278feffd0ab63e3861ec0611 "pdflatex"
+  "out/Assignment1.aux" 1573086542 2369 e9f85377278feffd0ab63e3861ec0611 "pdflatex"
   "refs.bib" 1572999230 1433 31ca91e120309943666b42095ca486bd ""
   (generated)
   "out/Assignment1.bbl"
   "out/Assignment1.blg"
-["pdflatex"] 1573085415 "/mnt/c/Users/Anik/Files/Work/units/NLP/assignment1/report/Assignment1.tex" "out/Assignment1.pdf" "Assignment1" 1573085416
+["pdflatex"] 1573086541 "/mnt/c/Users/Anik/Files/Work/units/NLP/assignment1/report/Assignment1.tex" "out/Assignment1.pdf" "Assignment1" 1573086543
   "/dev/null" 1573071168 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "/mnt/c/Users/Anik/Files/Work/units/NLP/assignment1/report/Assignment1.tex" 1573085415 5100 3828e2a0221c17e775b26757965487ea ""
+  "/mnt/c/Users/Anik/Files/Work/units/NLP/assignment1/report/Assignment1.tex" 1573086541 5258 d5d6c3ce9272bd321fcba84692f995c2 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/jknappen/ec/tcti0600.tfm" 1136768653 2048 c58e45fa93707b5d41a9fba568d101e4 ""
@@ -100,12 +100,12 @@
   "/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1570879216 4742575 7c4fbe054224a1393d8b0ba17ac84700 ""
   "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1570879289 4293248 2d4284aa9483166ca91d59c4aa6acc2d ""
   "/usr/local/texlive/2019/texmf.cnf" 1570879167 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "Assignment1.tex" 1573085415 5100 3828e2a0221c17e775b26757965487ea ""
-  "out/Assignment1.aux" 1573085416 2369 e9f85377278feffd0ab63e3861ec0611 "pdflatex"
+  "Assignment1.tex" 1573086541 5258 d5d6c3ce9272bd321fcba84692f995c2 ""
+  "out/Assignment1.aux" 1573086542 2369 e9f85377278feffd0ab63e3861ec0611 "pdflatex"
   "out/Assignment1.bbl" 1573084467 398 6ba5c1d7e43ce0a978347e4b8e03c4a0 "bibtex out/Assignment1"
-  "out/Assignment1.out" 1573085416 353 8cd8210101b51a64d1584f6b410caefd "pdflatex"
+  "out/Assignment1.out" 1573086542 353 8cd8210101b51a64d1584f6b410caefd "pdflatex"
   (generated)
-  "out/Assignment1.out"
   "out/Assignment1.pdf"
   "out/Assignment1.aux"
   "out/Assignment1.log"
+  "out/Assignment1.out"

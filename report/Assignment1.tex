@@ -47,7 +47,7 @@ SVMs are a type of classifier which treat each document as a vector of features.
   \textbf{Features}    & \textbf{Frequency or presence?} & \textbf{NB}     & \textbf{SVM}   \\ \hline
   Unigrams             & frequency                       & \textbf{81.0}   & 73.3           \\ \hline
   Unigrams             & presence                        & 82.8            & \textbf{86.3}  \\ \hline
-  Unigrams + stemming  & presence                        & 82.3            & \textbf{85.6}  \\ \hline
+  Unigrams + Stemming  & presence                        & 82.3            & \textbf{85.6}  \\ \hline
   Bigrams              & presence                        & \textbf{85.5}   & 83.0           \\ \hline
   Unigrams + Bigrams   & presence                        & 85.6            & \textbf{87.4}  \\ \hline
 
@@ -73,7 +73,7 @@ SVMs are a type of classifier which treat each document as a vector of features.
   \label{tab:significances}
 \end{table*}
 
-The systems described in Pang et al. were reimplemented in Python. We use Joachim's (1999) SVMlight package\footnote{\url{http://svmlight.joachims.org}} as our SVM implementation.
+The systems described in Pang et al. were reimplemented in Python\footnote{Available at }. We use Joachim's (1999) SVMlight package\footnote{\url{http://svmlight.joachims.org}} as our SVM implementation.
 
 We consider several different types of features - unigrams, bigrams as well as both unigrams and bigrams. We also perfom stemming on words before converting to n-grams, and consider the effect of stemming on the performance of the classifiers. The porter stemmer implemented in the nltk package\footnote{\url{https://www.nltk.org/_modules/nltk/stem/porter.html}} was used. No feature cutoff was implemented, and no stoplists were used. We also do not consider the position of words in sentences, nor do we carry out parts-of-speech tagging.
 
@@ -81,7 +81,11 @@ We use 10-fold stratified cross-validation, and dividing the data using round ro
 
 \section{Results}
 
+The accuracies produced by the systems under test are shown in Table 1 (averaged over 10 fold cross validation).
+
 The SVM classifiers perform significantly\footnote{When using a paired sign test with $\alpha = 0.05$} better when frequency is not taken into account. While we observed an improvement in the accuracy of Naive Bayes when using presence over frequency, it was not significant.
+
+Just using bigrams
 
 We did not observe an improvement in accuracy when using stemming. For both classifiers, the best results were observed when using both unigrams and bigrams. In particular, SVM was significantly better than NB in this case.
 
