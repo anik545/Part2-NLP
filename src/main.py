@@ -5,24 +5,30 @@ from naive_bayes import NaiveBayes
 from svm import SVM
 
 
-optionlist = [
-    {"unigrams": True, "presence": False},
-    {"unigrams": True, "presence": True},
-    {"unigrams": True, "presence": True, "stemming": True},
-    {"bigrams": True, "unigrams": False, "presence": True},
-    {"bigrams": True, "unigrams": True, "presence": True}
-]
+# optionlist = [
+#     {"unigrams": True, "presence": False},
+#     {"unigrams": True, "presence": True},
+#     {"unigrams": True, "presence": True, "stemming": True},
+#     {"bigrams": True, "unigrams": False, "presence": True},
+#     {"bigrams": True, "unigrams": True, "presence": True}
+# ]
 
-for options in optionlist:
-    print(options)
-    acc, _ = cross_validate(NaiveBayes(**options),
-                            ["./POS", "./NEG"], folds=10)
-    print("Naive Bayes", " Accuracy: ", acc)
-    acc, _ = cross_validate(SVM(**options), ["./POS", "./NEG"], folds=10)
-    print("SVM", " Accuracy: ", acc)
-    print()
+# for options in optionlist:
+#     print(options)
+#     acc, _ = cross_validate(NaiveBayes(**options),
+#                             ["./POS", "./NEG"], folds=10)
+#     print("Naive Bayes", " Accuracy: ", acc)
+#     acc, _ = cross_validate(SVM(**options), ["./POS", "./NEG"], folds=10)
+#     print("SVM", " Accuracy: ", acc)
+#     print()
 
 comparisons = [
+    (NaiveBayes(**{"unigrams": False, "bigrams": True, "presence": True}),
+     NaiveBayes(**{"unigrams": True, "bigrams": False, "presence": True})),
+
+    (SVM(**{"unigrams": True, "bigrams": False, "presence": True}),
+     SVM(**{"unigrams": False, "bigrams": True, "presence": True})),
+
     (NaiveBayes(**{"unigrams": True, "presence": False}),
      SVM(**{"unigrams": True, "presence": False})),
     (SVM(**{"presence": False}),

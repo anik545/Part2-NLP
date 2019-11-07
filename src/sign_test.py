@@ -2,7 +2,7 @@ from scipy.stats import binom
 from math import ceil
 
 
-# Return p-value for B is better than
+# Return p-value for B is better than A
 def sign_test(systemAcorrects, systemBcorrects):
     plus = 0
     minus = 0
