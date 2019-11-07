@@ -39,14 +39,13 @@ def cross_validate(model, dirs, folds=3):
         corrects, percent = model.evaluate(test_files, targets)
         corrects_per_fold.append(corrects)
         scores.append(percent)
-        print("Testing on fold", i, "accuracy:", percent)
-    print("Average accuracy: ", sum(scores)/len(scores))
     return (sum(scores)/len(scores)), corrects_per_fold
 
 
+# modelA beats modelB with significance p
 def sign_and_cv(modelA, modelB, dirs, folds=3):
-    cvA = cross_validate(modelA, dirs)
-    cvB = cross_validate(modelB, dirs)
+    cvA = cross_validate(modelA, dirs, folds=folds)
+    cvB = cross_validate(modelB, dirs, folds=folds)
 
     print("Accuracy of A: ", cvA[0])
     print("Accuracy of B: ", cvB[0])
@@ -62,6 +61,7 @@ def sign_and_cv(modelA, modelB, dirs, folds=3):
     return p, cvA[0], cvB[0]
 
 
-# print(cross_validate(NaiveBayes(), ["./POS", "./NEG"])[0])
-# print(cross_validate(SVM(), ["./POS", "./NEG"])[0])
-sign_and_cv(NaiveBayes(), SVM(), ["./POS", "./NEG"])
+if __name__ == "__main__":
+    # print(cross_validate(NaiveBayes(), ["./POS", "./NEG"])[0])
+    # print(cross_validate(SVM(), ["./POS", "./NEG"])[0])
+    sign_and_cv(NaiveBayes(), SVM(), ["./POS", "./NEG"])

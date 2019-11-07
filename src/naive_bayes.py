@@ -82,8 +82,16 @@ class NaiveBayes(object):
         posSum = 0
         negSum = 0
         words = file_to_wordlist(filename)
+        if self.stemming:
+            porter_stemmer = PorterStemmer()
+            words = [porter_stemmer.stem(w) for w in words]
+
         if self.bigrams:
             words = zip(words, words[1:])
+
+        if self.presence:
+            words = set(words)
+
         for word in words:
             if word in self.word_log_probs:
                 posSum += self.word_log_probs[word]["POS"]

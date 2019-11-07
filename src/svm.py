@@ -51,15 +51,21 @@ class SVM(object):
             self.curr_id += 1
         features = []
         for wordlist in pos_word_lists:
+
+            if self.presence:
+                wordlist = set(wordlist)
+
             c = Counter(wordlist)
-            featureVec = [(self.word_ids.get(word), 1)
-                          for word, _ in c.iteritems()]
+            featureVec = [(self.word_ids.get(word), v)
+                          for word, v in c.iteritems()]
             featureVec.sort(key=lambda x: x[0])
             features.append((1, featureVec))
         for wordlist in neg_word_lists:
+            if self.presence:
+                wordlist = set(wordlist)
             c = Counter(wordlist)
-            featureVec = [(self.word_ids.get(word), 1)
-                          for word, _ in c.iteritems()]
+            featureVec = [(self.word_ids.get(word), v)
+                          for word, v in c.iteritems()]
             featureVec.sort(key=lambda x: x[0])
             features.append((-1, featureVec))
         self.model = svmlight.learn(features)
@@ -68,8 +74,16 @@ class SVM(object):
         corrects = []
         data = []
         for i, wordlist in enumerate(files_to_wordlists(test_files)):
+            if self.stemming:
+                porter_stemmer = PorterStemmer()
+                wordlist = [porter_stemmer.stem(w) for w in wordlist]
             if self.bigrams:
-                wordlist = zip(wordlist, wordlist[1:])
+                if self.unigrams:
+                    wordlist = zip(wordlist, wordlist[1:]) + wordlist
+                else:
+                    wordlist = zip(wordlist, wordlist[1:])
+            if self.presence:
+                wordlist = set(wordlist)
             c = Counter(wordlist)
             l = []
             for word, v in c.iteritems():
