@@ -6,10 +6,16 @@
 \usepackage{blindtext}
 \usepackage{multicol}
 \usepackage{siunitx}
-\usepackage{footbib}
-\sisetup{detect-weight=true,detect-inline-weight=math, detect-all = true}
-\bibliographystyle{plain}
+\usepackage[style=verbose,backend=bibtex]{biblatex}
 
+%TC:newcounter fwords Words in footnotes
+%TC:macro \footnote [fwords]
+
+
+\addbibresource{refs.bib}
+
+
+\sisetup{detect-weight=true,detect-inline-weight=math, detect-all = true}
 
 \title{
   Natural Language Processing \\
@@ -22,12 +28,12 @@
 \centerline{\large NLP Assignment 1}
 \vspace{0.2in}
 \centerline{\Large\bf SVM-based Sentiment Detection of Reviews}
-\vspace{0.2in}
-\centerline{\large {Anik Roy, Christ's (ar899)}}
-\vspace{0.2in}
-\centerline{\large {\today}}
 \vspace{0.1in}
-\centerline{Word Count: 516\footnote{Using texcount}}
+\centerline{\large {Anik Roy, Christ's (ar899)}}
+\vspace{0.1in}
+\centerline{\large {\today}}
+\vspace{0.05in}
+\centerline{Word Count: 499\footnote{Using texcount, excluding footnotes}}
 \vspace{0.2in}
 
 
@@ -83,7 +89,7 @@ SVMs are a type of classifier which treat each document as a vector of features.
    NB, Unigrams + Presence & NB, Bigrams + Presence & \textit{0.0418} \\ \hline
 
   \end{tabular}
-  \caption{Systems compared for statistically significant difference (system B outperforming A), using a two-tailed sign test, with p-values under 0.05 in italics}
+  \caption{Systems compared for system B significantly outperforming system A, using two-tailed sign test, with p-values under 0.05 in italics}
   \label{tab:significances}
 \end{table*}
 
@@ -91,11 +97,12 @@ The systems described in Pang et al. were reimplemented in Python\footnote{Avail
 
 We consider several different types of features - unigrams, bigrams as well as both unigrams and bigrams. We also perfom stemming on words before converting to n-grams, and consider the effect of stemming on the performance of the classifiers. The porter stemmer implemented in the nltk package\footnote{\url{https://www.nltk.org/_modules/nltk/stem/porter.html}} was used. No feature cutoff was implemented, and no stoplists were used. We also do not consider the position of words in sentences, nor do we carry out parts-of-speech tagging.
 
+
 We use 10-fold stratified cross-validation, and dividing the data using round robin splitting. With 2000 documents (1000 positive, 1000 negative), and training on 90\% of the documents, the system is trained on 446506 bigrams and 52556 unigrams - the first 9 folds.
 
 \section{Results}
 
-The accuracies produced by the systems under test are shown in Table 1 (averaged over 10 fold cross validation).
+The accuracies produced by the systems under test are shown in Table 1.
 
 The SVM classifiers perform significantly\footnote{When using a paired sign test with $\alpha = 0.05$} better when frequency is not taken into account. While we observed an improvement in the accuracy of Naive Bayes when using presence over frequency, it was not significant.
 
@@ -108,10 +115,5 @@ We did not observe an improvement in accuracy when using stemming. For both clas
 Our reimplemtation of Pang et. al shows, as in the original paper, that machine learning methods can be successfully applied to the sentiment classification problem.
 
 \end{multicols}
-
-\clearpage
-
-\footbibliographystyle{unsrt}
-\footbibliography{xampl}
 
 \end{document}
