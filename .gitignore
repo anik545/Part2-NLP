@@ -1,12 +1,16 @@
 svmlight-0.4/
 svmlight-0.4.tar.gz
 
-# .vscode/
+assignment2/models/
+
+.vscode/
 
 # Data
 *.tar
+*.gz
 NEG/
 POS/
+data/
 
 # Python
 *.pyc

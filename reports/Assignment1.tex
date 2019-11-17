@@ -1,0 +1,119 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[parfill]{parskip}
+\usepackage{fullpage}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{blindtext}
+\usepackage{multicol}
+\usepackage{siunitx}
+\usepackage[style=verbose,backend=bibtex]{biblatex}
+
+%TC:newcounter fwords Words in footnotes
+%TC:macro \footnote [fwords]
+
+
+\addbibresource{refs.bib}
+
+
+\sisetup{detect-weight=true,detect-inline-weight=math, detect-all = true}
+
+\title{
+  Natural Language Processing \\
+  \large Assignment 1}
+\author{Anik Roy (ar899)}
+\date{\today}
+
+\begin{document}
+
+\centerline{\large NLP Assignment 1}
+\vspace{0.2in}
+\centerline{\Large\bf SVM-based Sentiment Detection of Reviews}
+\vspace{0.1in}
+\centerline{\large {Anik Roy, Christ's (ar899)}}
+\vspace{0.1in}
+\centerline{\large {\today}}
+\vspace{0.05in}
+\centerline{Word Count: 499\footnote{Using texcount, excluding footnotes}}
+\vspace{0.2in}
+
+
+\begin{multicols}{2}
+  
+\section{Introduction}
+
+This report considers the problem of the positive or negative sentiment classification of reviews. We reimplement a subset of techniques used in Pang et al. (2002)\footcite{pang2002thumbs}, specifically support vector machine (SVM) and Naive Bayes (NB) classifiers. The data used was a set of movie reviews given in the framework of an NLP course.
+
+\section{Background}
+
+A bag of n-grams representation is used to classify documents. Pang et al. also choose some combinations of parameters to investigate the effect on accuracy of the final system, for example using unigrams or bigrams. The effect of considering the frequency of words compared to just their presence is also considered.
+
+\subsection{Naive Bayes}
+The NB classifier assigns documents to a class based on the likelihood of it being in that class $c^{*} = \arg \max_{c}P(c | d)$. $P(c | d)$, is derived by:
+\[P_\mathrm{NB}(c | d) := \frac{P(c)(\prod^{m}_{i=1}P(f_{i} | c)^{n_{i}(d)})}{P(d)} \]
+making the naive assumption that features are dependent only on class.
+
+\subsection{Support Vector Machines}
+SVMs are a type of classifier which treat each document as a vector of features. Training consists of finding a hyperplane to separate the two classes, and classifying documents by measuring distance to the hyperplane.
+
+\section{Method}
+
+
+\begin{table*}
+  \centering
+  \begin{tabular}{|l|l|l|l|}
+  \cline{1-4}
+  \textbf{Features}    & \textbf{Frequency or presence?} & \textbf{NB}     & \textbf{SVM}   \\ \hline
+  Unigrams             & frequency                       & \textbf{81.0}   & 73.3           \\ \hline
+  Unigrams             & presence                        & 82.8            & \textbf{86.3}  \\ \hline
+  Unigrams + Stemming  & presence                        & 82.3            & \textbf{85.6}  \\ \hline
+  Bigrams              & presence                        & \textbf{85.5}   & 83.0           \\ \hline
+  Unigrams + Bigrams   & presence                        & 85.6            & \textbf{87.4}  \\ \hline
+
+\end{tabular}
+  \caption{Accuracies of NB and SVM systems with different feature types, averaging over 10 fold cross validation, in percent}
+  \label{tab:results}
+\end{table*}
+
+\begin{table*}
+  \centering
+  \begin{tabular}{|l|l|l|}
+  \hline
+  \textbf{System A} & \textbf{System B} & \textbf{P value} \\ \hline
+   NB, Unigrams & SVM, Unigrams & \textit{\num{6.20e-4}} \\ \hline
+   SVM, Unigrams + Frequency & SVM, Unigrams + Presence & \textit{\num{5.09e-09}} \\ \hline
+   NB, Bigrams & NB, Unigrams & \num{0.236} \\ \hline
+   SVM, Unigrams & SVM, Bigrams & \num{0.140} \\ \hline
+   NB, Unigrams + Frequency & NB, Unigrams + Presence & 0.421 \\ \hline
+   NB, Unigrams + Presence & SVM, Unigrams + Presence & \num{0.117}  \\ \hline
+   NB, Unigrams + Bigrams & SVM, Unigrams + Bigrams & \textit{\num{2.33e-06}} \\ \hline
+   NB, Unigrams + Presence & NB, Bigrams + Presence & \textit{0.0418} \\ \hline
+
+  \end{tabular}
+  \caption{Systems compared for system B significantly outperforming system A, using two-tailed sign test, with p-values under 0.05 in italics}
+  \label{tab:significances}
+\end{table*}
+
+The systems described in Pang et al. were reimplemented in Python\footnote{Available at both \url{https://github.com/anik545/Part2-NLP} and at /home/ar899/NLP on MCS machines}. We use Joachim's (1999) SVMlight package\footnote{\url{http://svmlight.joachims.org}} as our SVM implementation.
+
+We consider several different types of features - unigrams, bigrams as well as both unigrams and bigrams. We also perfom stemming on words before converting to n-grams, and consider the effect of stemming on the performance of the classifiers. The porter stemmer implemented in the nltk package\footnote{\url{https://www.nltk.org/_modules/nltk/stem/porter.html}} was used. No feature cutoff was implemented, and no stoplists were used. We also do not consider the position of words in sentences, nor do we carry out parts-of-speech tagging.
+
+
+We use 10-fold stratified cross-validation, and dividing the data using round robin splitting. With 2000 documents (1000 positive, 1000 negative), and training on 90\% of the documents, the system is trained on 446506 bigrams and 52556 unigrams - the first 9 folds.
+
+\section{Results}
+
+The accuracies produced by the systems under test are shown in Table 1.
+
+The SVM classifiers perform significantly\footnote{When using a paired sign test with $\alpha = 0.05$} better when frequency is not taken into account. While we observed an improvement in the accuracy of Naive Bayes when using presence over frequency, it was not significant.
+
+Just using bigrams did not produce significantly better results, for both SVM and NB.
+
+We did not observe an improvement in accuracy when using stemming. For both classifiers, the best results were observed when using both unigrams and bigrams. In particular, SVM was significantly better than NB in this case.
+
+\section{Conclusions}
+
+Our reimplemtation of Pang et. al shows, as in the original paper, that machine learning methods can be successfully applied to the sentiment classification problem.
+
+\end{multicols}
+
+\end{document}
