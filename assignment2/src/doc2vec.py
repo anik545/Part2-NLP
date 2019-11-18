@@ -94,18 +94,4 @@ if __name__ == "__main__":
     all_docs = load_all_docs()
     validation, the_rest = validation_set(pang_docs)
 
-
-    model = Doc2VecSVM()
-    # model.train(the_rest, all_docs)
-    model.set_model("model_{}")
-
-    c, p = model.evaluate(validation)
-
-    print(p)
-
-    # next set of args
-    # model = Doc2VecSVM()
-    # model.train(the_rest, all_docs)
-    # model.evaluate(validation)
-
-    # ... etc.
+    run_with_args({'epochs':10, 'vector_size':150, 'min_count':3, 'window':4}, all_docs, the_rest)
