@@ -1,19 +1,60 @@
 import os
 import glob
+from tqdm import tqdm
 
-DATA_DIR = "data/aclImdb/"
+DATA_DIR = "/mnt/c/Users/Anik/Files/Work/units/NLP/data/aclImdb/"
+
 folders = ["test/neg/", "test/pos/", "test/unsup/",
-           "train/neg/", "train/pos/", "train/neg/"]
+           "train/neg/", "train/pos/", "train/unsup/"]
 
 
-def load_all_docs():
+def _load_all_docs():
     docs = []
     for folder in folders:
+        print(folder)
         for g in glob.glob(DATA_DIR + folder + "*"):
-            print(g)
-            with open(g, 'r') as f:
-                docs.append(f.readlines())
+            with open(g, 'r') as fp:
+                words = [word for line in fp for word in line.split()]
+                docs.append(words)
+    print("*** LOADED DOCUMENTS FOR DOC2VEC ***")
     return docs
 
 
-print(load_all_docs())
+def load_all_docs():
+    with open("/mnt/c/Users/Anik/Files/Work/units/NLP/assignment2/all_docs.txt", "r") as f:
+        docs = []
+        for line in tqdm(f.readlines(), desc="Loading files"):
+            docs.append(line.split(' '))
+
+    print("*** LOADED DOCUMENTS FOR DOC2VEC ***")
+    return docs
+
+
+PANG_DATA_DIR = "/mnt/c/Users/Anik/Files/Work/units/NLP/data/part1/"
+
+pang_folders = ['NEG', 'POS']
+
+
+def load_all_pang_docs():
+    docs = []
+    for folder in pang_folders:
+        for fp in tqdm(glob.glob(PANG_DATA_DIR + folder + '/*'), desc="Loading files from "+folder):
+            with open(fp, 'r') as f:
+                words = [word for line in f for word in line.split()]
+            docs.append((folder, fp, words))
+    return docs
+
+
+def files_to_wordlists(paths, transform=lambda x: x):
+    data = []
+    for path in paths:
+        with open(path, 'r') as f:
+            lines = f.readlines()
+            data.append(
+                list(map(lambda w: transform(w.replace('\n', '')), lines)))
+    data = list(filter(lambda x: x != '', data))
+    return data
+
+
+if __name__ == "__main__":
+    load_all_pang_docs()
