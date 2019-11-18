@@ -18,6 +18,8 @@ __pycache__/
 .mypy_cache/
 .ipynb_checkpoints/
 
+all_docs.txt
+
 # Latex
 ## Core latex/pdflatex auxiliary files:
 *.aux
