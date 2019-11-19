@@ -25,7 +25,11 @@ MODEL_DIR_PATH = "/mnt/c/Users/Anik/Files/Work/units/NLP/assignment2/models/"
 
 class Doc2VecSVM(object):
 
-    def __init__(self, doc2vec_args={}, doc2vec_model=None, svm_model=None):
+    def __init__(self, doc2vec_args={}, doc2vec_model=None, svm_model=None, doc2vec_train_docs=None):
+        if doc2vec_train_docs is None:
+            self.doc2vec_train_docs = load_all_docs()
+        else:
+            self.doc2vec_train_docs = doc2vec_train_docs
         self.doc2vec_model = Doc2Vec.load(MODEL_DIR_PATH + doc2vec_model) if doc2vec_model else None
         self.svm_model = read_model(svm_model) if svm_model else None
         self.doc2vec_args = doc2vec_args
@@ -56,8 +60,10 @@ class Doc2VecSVM(object):
         self.svm_model = learn(svmlight_lines)
         print("*** SVM TRAINED ***")
 
-    def train(self, svm_train_docs, doc2vec_train_docs):
-        self.train_doc_vec(doc2vec_train_docs)
+    def train(self, svm_train_docs):
+        # only train the doc2vec once with a certain set of args
+        if self.doc2vec_model is None:
+            self.train_doc_vec(self.doc2vec_train_docs)
         self.train_svm(svm_train_docs)
 
     # test_docs: list of (pos/neg, filename, wordlist)
@@ -75,12 +81,12 @@ class Doc2VecSVM(object):
         return (corrects, float(sum(corrects))/len(corrects))
 
 
-def run_with_args(args, doc2vec_train, pang_svm_train, validation):
+def run_with_args(args, pang_svm_train, validation):
     defaults = {'vector_size':100, 'window':2, 'min_count':1, 'workers':4, 'seed':0}
     defaults.update(args)
     print(defaults)
     model = Doc2VecSVM(doc2vec_args=defaults)
-    model.train(pang_svm_train, doc2vec_train)
+    model.train(pang_svm_train)
     c, p = model.evaluate(validation)
     print(args, p)
     return (args,p)
@@ -89,9 +95,8 @@ def run_with_args(args, doc2vec_train, pang_svm_train, validation):
 if __name__ == "__main__":
 
     pang_docs = load_all_pang_docs()
-    all_docs = load_all_docs()
     validation, the_rest = validation_set(pang_docs)
     # TODO maybe try using presence in loading pang_docs - does it even effect anything, since we're not using count vectors here?
     # Actually, probably shouldn't use presence here
-    run_with_args({'dm':0,'epochs':10, 'vector_size':120, 'min_count':2, 'window':7}, all_docs, the_rest, validation)
-    run_with_args({'dm':0,'epochs':10, 'vector_size':120, 'min_count':2, 'window':7, 'dbow_words': 1}, all_docs, the_rest, validation)
+    run_with_args({'dm':0,'epochs':10, 'vector_size':120, 'min_count':2, 'window':7}, the_rest, validation)
+    run_with_args({'dm':0,'epochs':10, 'vector_size':120, 'min_count':2, 'window':7, 'dbow_words': 1}, the_rest, validation)

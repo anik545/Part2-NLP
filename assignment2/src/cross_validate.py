@@ -1,5 +1,5 @@
 import numpy as np
-
+from permutation_test import permutation_test
 # return list of list of docs, each list is a split
 
 def flatten(l):
@@ -20,9 +20,30 @@ def validation_set(docs, percent=10):
     return (validation, the_rest)
 
 
-def cross_validate():
-    pass
+def cross_validate(system, docs):
+    n=10
+    splits = split_stratified(docs, n=n)
+    corrects = []
+    ps = []
+    for x in range(n):
+        train = flatten(splits[:x] + splits[(x+1):])
+        test = splits[x]
+        system.train(train)
+        c, p = system.evaluate(test)
+        corrects.append(c)
+        ps.append(p)
+    return np.mean(np.array(ps)), corrects
 
+def permutation_test_and_cv(systemA, systemB, docs):
+    pA, correctsA = cross_validate(systemA, docs)
+    pB, correctsB = cross_validate(systemB, docs)
+
+    print("Accuracy of A: ", pA)
+    print("Accuracy of B: ", pB)
+
+    p = permutation_test(correctsA, correctsB)
+    # B beats A with p-value of p
+    return p, pA, pB
 
 if __name__ == "__main__":
     s = validation_set([("POS","a",["a","b"]),("POS","a",["a","b"]),("POS","a",["a","b"]),("POS","a",["a","b"]),("POS","a",["a","b"]),
