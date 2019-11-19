@@ -1,6 +1,6 @@
 import os
 import glob
-from tqdm import tqdm
+from tqdm.notebook import tqdm
 
 DATA_DIR = "/mnt/c/Users/Anik/Files/Work/units/NLP/data/aclImdb/"
 
@@ -35,12 +35,14 @@ PANG_DATA_DIR = "/mnt/c/Users/Anik/Files/Work/units/NLP/data/part1/"
 pang_folders = ['NEG', 'POS']
 
 
-def load_all_pang_docs():
+def load_all_pang_docs(presence=False):
     docs = []
     for folder in pang_folders:
         for fp in tqdm(glob.glob(PANG_DATA_DIR + folder + '/*'), desc="Loading files from "+folder):
             with open(fp, 'r') as f:
                 words = [word for line in f for word in line.split()]
+                if presence:
+                    words = set(words)
             docs.append((folder, fp, words))
     return docs
 

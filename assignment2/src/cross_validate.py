@@ -19,6 +19,11 @@ def validation_set(docs, percent=10):
 
     return (validation, the_rest)
 
+
+def cross_validate():
+    pass
+
+
 if __name__ == "__main__":
     s = validation_set([("POS","a",["a","b"]),("POS","a",["a","b"]),("POS","a",["a","b"]),("POS","a",["a","b"]),("POS","a",["a","b"]),
     ("POS","a",["a","b"]),("POS","a",["a","b"]),("POS","a",["a","b"]),("POS","a",["a","b"]),("POS","a",["a","b"])])
