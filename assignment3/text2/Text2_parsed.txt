@@ -1,0 +1,963 @@
+Document: ID=luggage (2 sentences, 28 tokens)
+
+Sentence #1 (1 tokens):
+Luggage
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Luggage-1)
+
+
+Sentence #2 (27 tokens):
+We ask you to keep luggage down to one medium-sized suitcase per person, but a small holdall can also be taken on board the coach.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, ask-2)
+nsubj(ask-2, We-1)
+dobj(ask-2, you-3)
+nsubj:xsubj(keep-5, you-3)
+mark(keep-5, to-4)
+xcomp(ask-2, keep-5)
+dobj(keep-5, luggage-6)
+advmod(keep-5, down-7)
+case(suitcase-11, to-8)
+nummod(suitcase-11, one-9)
+amod(suitcase-11, medium-sized-10)
+nmod:to(down-7, suitcase-11)
+case(person-13, per-12)
+nmod:per(suitcase-11, person-13)
+punct(ask-2, ,-14)
+cc(ask-2, but-15)
+det(holdall-18, a-16)
+amod(holdall-18, small-17)
+nsubjpass(taken-22, holdall-18)
+aux(taken-22, can-19)
+advmod(taken-22, also-20)
+auxpass(taken-22, be-21)
+conj:but(ask-2, taken-22)
+case(board-24, on-23)
+nmod:on(taken-22, board-24)
+det(coach-26, the-25)
+dep(board-24, coach-26)
+punct(ask-2, .-27)
+
+Document: ID=seat_allocation (3 sentences, 57 tokens)
+
+Sentence #1 (2 tokens):
+Seat Allocation
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Allocation-2)
+compound(Allocation-2, Seat-1)
+
+
+Sentence #2 (32 tokens):
+Requests for particular seats can be made on most coach breaks when booking, but since allocations are made on a first come first served basis, early booking is advisable.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, made-7)
+nsubjpass(made-7, Requests-1)
+case(seats-4, for-2)
+amod(seats-4, particular-3)
+nmod:for(Requests-1, seats-4)
+aux(made-7, can-5)
+auxpass(made-7, be-6)
+case(breaks-11, on-8)
+amod(breaks-11, most-9)
+compound(breaks-11, coach-10)
+nmod:on(made-7, breaks-11)
+advmod(booking-13, when-12)
+advcl(made-7, booking-13)
+punct(made-7, ,-14)
+cc(made-7, but-15)
+mark(made-19, since-16)
+nsubjpass(made-19, allocations-17)
+auxpass(made-19, are-18)
+advcl:since(advisable-31, made-19)
+case(first-22, on-20)
+det(first-22, a-21)
+nmod:on(made-19, first-22)
+acl(first-22, come-23)
+advmod(served-25, first-24)
+ccomp(come-23, served-25)
+dobj(served-25, basis-26)
+punct(advisable-31, ,-27)
+amod(booking-29, early-28)
+nsubj(advisable-31, booking-29)
+cop(advisable-31, is-30)
+conj:but(made-7, advisable-31)
+punct(made-7, .-32)
+
+
+Sentence #3 (23 tokens):
+When bookings are made with us you will be offered the best seats that are available on the coach at that time.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, offered-10)
+advmod(made-4, When-1)
+nsubjpass(made-4, bookings-2)
+auxpass(made-4, are-3)
+advcl(offered-10, made-4)
+case(us-6, with-5)
+nmod:with(made-4, us-6)
+nsubjpass(offered-10, you-7)
+aux(offered-10, will-8)
+auxpass(offered-10, be-9)
+det(seats-13, the-11)
+amod(seats-13, best-12)
+dobj(offered-10, seats-13)
+nsubj(available-16, seats-13)
+ref(seats-13, that-14)
+cop(available-16, are-15)
+acl:relcl(seats-13, available-16)
+case(coach-19, on-17)
+det(coach-19, the-18)
+nmod:on(available-16, coach-19)
+case(time-22, at-20)
+det(time-22, that-21)
+nmod:at(coach-19, time-22)
+punct(offered-10, .-23)
+
+Document: ID=travel_documents (3 sentences, 66 tokens)
+
+Sentence #1 (2 tokens):
+Travel Documents
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Documents-2)
+compound(Documents-2, Travel-1)
+
+
+Sentence #2 (33 tokens):
+When you have paid your deposit we will send to you all the necessary documents and labels, so that you receive them in good time before the coach break departure date.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, send-9)
+advmod(paid-4, When-1)
+nsubj(paid-4, you-2)
+aux(paid-4, have-3)
+advcl(send-9, paid-4)
+nmod:poss(deposit-6, your-5)
+dobj(paid-4, deposit-6)
+nsubj(send-9, we-7)
+aux(send-9, will-8)
+case(you-11, to-10)
+nmod:to(send-9, you-11)
+det:predet(documents-15, all-12)
+det(documents-15, the-13)
+amod(documents-15, necessary-14)
+dobj(send-9, documents-15)
+cc(documents-15, and-16)
+dobj(send-9, labels-17)
+conj:and(documents-15, labels-17)
+punct(send-9, ,-18)
+mark(receive-22, so-19)
+mwe(so-19, that-20)
+nsubj(receive-22, you-21)
+advcl:so_that(send-9, receive-22)
+dobj(receive-22, them-23)
+case(time-26, in-24)
+amod(time-26, good-25)
+nmod:in(receive-22, time-26)
+case(date-32, before-27)
+det(date-32, the-28)
+compound(date-32, coach-29)
+compound(date-32, break-30)
+compound(date-32, departure-31)
+nmod:before(time-26, date-32)
+punct(send-9, .-33)
+
+
+Sentence #3 (31 tokens):
+Certain documents, for example air or boat tickets, may have to be retained and your driver or courier will then issue them to you at the relevant point.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, have-12)
+amod(documents-2, Certain-1)
+nsubj(have-12, documents-2)
+nsubjpass:xsubj(retained-15, documents-2)
+punct(documents-2, ,-3)
+case(air-6, for-4)
+compound(air-6, example-5)
+nmod:for(documents-2, air-6)
+cc(air-6, or-7)
+compound(tickets-9, boat-8)
+nmod:for(documents-2, tickets-9)
+conj:or(air-6, tickets-9)
+punct(documents-2, ,-10)
+aux(have-12, may-11)
+mark(retained-15, to-13)
+auxpass(retained-15, be-14)
+xcomp(have-12, retained-15)
+cc(have-12, and-16)
+nmod:poss(driver-18, your-17)
+nsubj(issue-23, driver-18)
+cc(driver-18, or-19)
+conj:or(driver-18, courier-20)
+nsubj(issue-23, courier-20)
+aux(issue-23, will-21)
+advmod(issue-23, then-22)
+conj:and(have-12, issue-23)
+dobj(issue-23, them-24)
+case(you-26, to-25)
+nmod:to(issue-23, you-26)
+case(point-30, at-27)
+det(point-30, the-28)
+amod(point-30, relevant-29)
+nmod:at(issue-23, point-30)
+punct(have-12, .-31)
+
+
+
+Coreference set:
+	(2,23,[23,24]) -> (2,15,[12,16]), that is: "them" -> "all the necessary documents"
+	(3,24,[24,25]) -> (2,15,[12,16]), that is: "them" -> "all the necessary documents"
+
+Coreference set:
+	(2,5,[5,6]) -> (2,2,[2,3]), that is: "your" -> "you"
+	(2,21,[21,22]) -> (2,2,[2,3]), that is: "you" -> "you"
+	(3,26,[26,27]) -> (2,2,[2,3]), that is: "you" -> "you"
+
+Document: ID=special_diets (4 sentences, 91 tokens)
+
+Sentence #1 (2 tokens):
+Special Diets
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Diets-2)
+amod(Diets-2, Special-1)
+
+
+Sentence #2 (22 tokens):
+If you require a special diet you must inform us at the time of booking with a copy of the diet.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, inform-9)
+mark(require-3, If-1)
+nsubj(require-3, you-2)
+advcl:if(inform-9, require-3)
+det(diet-6, a-4)
+amod(diet-6, special-5)
+dobj(require-3, diet-6)
+nsubj(inform-9, you-7)
+aux(inform-9, must-8)
+dobj(inform-9, us-10)
+case(time-13, at-11)
+det(time-13, the-12)
+nmod:at(inform-9, time-13)
+mark(booking-15, of-14)
+acl:of(time-13, booking-15)
+case(copy-18, with-16)
+det(copy-18, a-17)
+nmod:with(booking-15, copy-18)
+case(diet-21, of-19)
+det(diet-21, the-20)
+nmod:of(copy-18, diet-21)
+punct(inform-9, .-22)
+
+
+Sentence #3 (49 tokens):
+This will be notified to the hotel or hotels on your coach break, but on certain coach breaks the hotels used are tourist class and whilst offering value for money within the price range, they may not have the full facilities to cope with special diets.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, notified-4)
+nsubjpass(notified-4, This-1)
+aux(notified-4, will-2)
+auxpass(notified-4, be-3)
+case(hotel-7, to-5)
+det(hotel-7, the-6)
+nmod:to(notified-4, hotel-7)
+cc(hotel-7, or-8)
+nmod:to(notified-4, hotels-9)
+conj:or(hotel-7, hotels-9)
+case(break-13, on-10)
+nmod:poss(break-13, your-11)
+compound(break-13, coach-12)
+nmod:on(hotel-7, break-13)
+punct(hotel-7, ,-14)
+cc(hotel-7, but-15)
+mark(breaks-19, on-16)
+amod(coach-18, certain-17)
+nsubj(breaks-19, coach-18)
+nmod:to(notified-4, breaks-19)
+conj:but(hotel-7, breaks-19)
+det(hotels-21, the-20)
+nsubj(class-25, hotels-21)
+acl(hotels-21, used-22)
+cop(class-25, are-23)
+compound(class-25, tourist-24)
+ccomp(breaks-19, class-25)
+cc(breaks-19, and-26)
+mark(offering-28, whilst-27)
+advcl:whilst(have-40, offering-28)
+dobj(offering-28, value-29)
+case(money-31, for-30)
+nmod:for(value-29, money-31)
+case(range-35, within-32)
+det(range-35, the-33)
+compound(range-35, price-34)
+nmod:within(offering-28, range-35)
+punct(have-40, ,-36)
+nsubj(have-40, they-37)
+aux(have-40, may-38)
+neg(have-40, not-39)
+conj:but(hotel-7, have-40)
+conj:and(breaks-19, have-40)
+det(facilities-43, the-41)
+amod(facilities-43, full-42)
+dobj(have-40, facilities-43)
+mark(cope-45, to-44)
+ccomp(have-40, cope-45)
+case(diets-48, with-46)
+amod(diets-48, special-47)
+nmod:with(cope-45, diets-48)
+punct(notified-4, .-49)
+
+
+Sentence #4 (18 tokens):
+Any extra costs incurred must be paid to the hotel by yourself before departure from the hotel.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, paid-7)
+det(costs-3, Any-1)
+amod(costs-3, extra-2)
+nsubjpass(paid-7, costs-3)
+acl(costs-3, incurred-4)
+aux(paid-7, must-5)
+auxpass(paid-7, be-6)
+case(hotel-10, to-8)
+det(hotel-10, the-9)
+nmod:to(paid-7, hotel-10)
+case(yourself-12, by-11)
+nmod:agent(paid-7, yourself-12)
+case(departure-14, before-13)
+nmod:before(paid-7, departure-14)
+case(hotel-17, from-15)
+det(hotel-17, the-16)
+nmod:from(departure-14, hotel-17)
+punct(paid-7, .-18)
+
+
+
+Coreference set:
+	(3,37,[37,38]) -> (3,21,[20,23]), that is: "they" -> "the hotels used"
+
+Coreference set:
+	(2,21,[20,22]) -> (2,6,[4,7]), that is: "the diet" -> "a special diet"
+
+Coreference set:
+	(4,17,[16,18]) -> (4,10,[9,11]), that is: "the hotel" -> "the hotel"
+
+Document: ID=accomodation (5 sentences, 111 tokens)
+
+Sentence #1 (1 tokens):
+Accommodation
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Accommodation-1)
+
+
+Sentence #2 (28 tokens):
+Many of our coach breaks now include, within the price, accommodation with private facilities, and this will be indicated on the coach break page.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, include-7)
+det:qmod(breaks-5, Many-1)
+mwe(Many-1, of-2)
+nmod:poss(breaks-5, our-3)
+compound(breaks-5, coach-4)
+nsubj(include-7, breaks-5)
+advmod(include-7, now-6)
+punct(include-7, ,-8)
+case(price-11, within-9)
+det(price-11, the-10)
+nmod:within(include-7, price-11)
+punct(price-11, ,-12)
+appos(price-11, accommodation-13)
+case(facilities-16, with-14)
+amod(facilities-16, private-15)
+nmod:with(accommodation-13, facilities-16)
+punct(include-7, ,-17)
+cc(include-7, and-18)
+nsubjpass(indicated-22, this-19)
+aux(indicated-22, will-20)
+auxpass(indicated-22, be-21)
+conj:and(include-7, indicated-22)
+case(page-27, on-23)
+det(page-27, the-24)
+compound(page-27, coach-25)
+compound(page-27, break-26)
+nmod:on(indicated-22, page-27)
+punct(include-7, .-28)
+
+
+Sentence #3 (44 tokens):
+Other coach breaks have a limited number of rooms with private facilities which, subject to availability, can be reserved and guaranteed at the time of booking - the supplementary charge shown in the price panel will be added to your account.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, have-4)
+amod(breaks-3, Other-1)
+compound(breaks-3, coach-2)
+nsubj(have-4, breaks-3)
+det(number-7, a-5)
+amod(number-7, limited-6)
+dobj(have-4, number-7)
+nsubjpass(reserved-21, number-7)
+nsubjpass(guaranteed-23, number-7)
+case(rooms-9, of-8)
+nmod:of(number-7, rooms-9)
+case(facilities-12, with-10)
+amod(facilities-12, private-11)
+nmod:with(rooms-9, facilities-12)
+ref(number-7, which-13)
+punct(reserved-21, ,-14)
+advmod(reserved-21, subject-15)
+case(availability-17, to-16)
+nmod:to(subject-15, availability-17)
+punct(reserved-21, ,-18)
+aux(reserved-21, can-19)
+auxpass(reserved-21, be-20)
+acl:relcl(number-7, reserved-21)
+cc(reserved-21, and-22)
+acl:relcl(number-7, guaranteed-23)
+conj:and(reserved-21, guaranteed-23)
+case(time-26, at-24)
+det(time-26, the-25)
+nmod:at(reserved-21, time-26)
+case(booking-28, of-27)
+nmod:of(time-26, booking-28)
+punct(have-4, --29)
+det(charge-32, the-30)
+amod(charge-32, supplementary-31)
+nsubjpass(added-40, charge-32)
+acl(charge-32, shown-33)
+case(panel-37, in-34)
+det(panel-37, the-35)
+compound(panel-37, price-36)
+nmod:in(shown-33, panel-37)
+aux(added-40, will-38)
+auxpass(added-40, be-39)
+parataxis(have-4, added-40)
+case(account-43, to-41)
+nmod:poss(account-43, your-42)
+nmod:to(added-40, account-43)
+punct(have-4, .-44)
+
+
+Sentence #4 (14 tokens):
+On any coach break there are only a limited number of single rooms.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, are-6)
+case(break-4, On-1)
+det(break-4, any-2)
+compound(break-4, coach-3)
+nmod:on(are-6, break-4)
+expl(are-6, there-5)
+advmod(are-6, only-7)
+det(number-10, a-8)
+amod(number-10, limited-9)
+nsubj(are-6, number-10)
+case(rooms-13, of-11)
+amod(rooms-13, single-12)
+nmod:of(number-10, rooms-13)
+punct(are-6, .-14)
+
+
+Sentence #5 (24 tokens):
+When a single room is available it may be subject to a supplementary charge and this will be shown on the brochure page.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, subject-10)
+advmod(available-6, When-1)
+det(room-4, a-2)
+amod(room-4, single-3)
+nsubj(available-6, room-4)
+cop(available-6, is-5)
+advcl(subject-10, available-6)
+nsubj(subject-10, it-7)
+aux(subject-10, may-8)
+cop(subject-10, be-9)
+case(charge-14, to-11)
+det(charge-14, a-12)
+amod(charge-14, supplementary-13)
+nmod:to(subject-10, charge-14)
+cc(subject-10, and-15)
+nsubjpass(shown-19, this-16)
+aux(shown-19, will-17)
+auxpass(shown-19, be-18)
+conj:and(subject-10, shown-19)
+case(page-23, on-20)
+det(page-23, the-21)
+compound(page-23, brochure-22)
+nmod:on(shown-19, page-23)
+punct(subject-10, .-24)
+
+
+
+Coreference set:
+	(5,7,[7,8]) -> (5,4,[2,5]), that is: "it" -> "a single room"
+
+Coreference set:
+	(5,23,[21,24]) -> (2,27,[24,28]), that is: "the brochure page" -> "the coach break page"
+
+Document: ID=entertainment (3 sentences, 57 tokens)
+
+Sentence #1 (1 tokens):
+Entertainment
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Entertainment-1)
+
+
+Sentence #2 (19 tokens):
+Some of our hotels arrange additional entertainment which could include music, dancing, film shows, etc.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, arrange-5)
+nsubj(arrange-5, Some-1)
+case(hotels-4, of-2)
+nmod:poss(hotels-4, our-3)
+nmod:of(Some-1, hotels-4)
+amod(entertainment-7, additional-6)
+dobj(arrange-5, entertainment-7)
+nsubj(include-10, entertainment-7)
+ref(entertainment-7, which-8)
+aux(include-10, could-9)
+acl:relcl(entertainment-7, include-10)
+dobj(include-10, music-11)
+punct(music-11, ,-12)
+appos(music-11, dancing-13)
+punct(dancing-13, ,-14)
+compound(shows-16, film-15)
+appos(dancing-13, shows-16)
+punct(dancing-13, ,-17)
+dep(dancing-13, etc.-18)
+punct(arrange-5, .-19)
+
+
+Sentence #3 (37 tokens):
+The nature and frequency of the entertainment presented is at the discretion of the hotel and therefore not guaranteed and could be withdrawn if there is a lack of demand or insufficient numbers in the hotel.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, discretion-12)
+det(nature-2, The-1)
+nsubj(discretion-12, nature-2)
+nsubj(guaranteed-19, nature-2)
+cc(nature-2, and-3)
+conj:and(nature-2, frequency-4)
+nsubj(discretion-12, frequency-4)
+case(entertainment-7, of-5)
+det(entertainment-7, the-6)
+nmod:of(nature-2, entertainment-7)
+acl(entertainment-7, presented-8)
+cop(discretion-12, is-9)
+case(discretion-12, at-10)
+det(discretion-12, the-11)
+case(hotel-15, of-13)
+det(hotel-15, the-14)
+nmod:of(discretion-12, hotel-15)
+cc(discretion-12, and-16)
+conj:and(discretion-12, therefore-17)
+neg(guaranteed-19, not-18)
+conj:and(discretion-12, guaranteed-19)
+cc(guaranteed-19, and-20)
+aux(withdrawn-23, could-21)
+auxpass(withdrawn-23, be-22)
+conj:and(discretion-12, withdrawn-23)
+conj:and(guaranteed-19, withdrawn-23)
+mark(is-26, if-24)
+expl(is-26, there-25)
+advcl:if(withdrawn-23, is-26)
+det(lack-28, a-27)
+nsubj(is-26, lack-28)
+case(demand-30, of-29)
+nmod:of(lack-28, demand-30)
+cc(lack-28, or-31)
+amod(numbers-33, insufficient-32)
+nsubj(is-26, numbers-33)
+conj:or(lack-28, numbers-33)
+case(hotel-36, in-34)
+det(hotel-36, the-35)
+nmod:in(numbers-33, hotel-36)
+punct(discretion-12, .-37)
+
+
+
+Coreference set:
+	(3,36,[35,37]) -> (3,15,[14,16]), that is: "the hotel" -> "the hotel"
+
+Document: ID=question_9 (5 sentences, 39 tokens)
+
+Sentence #1 (11 tokens):
+If you want to sit at the front of the coach
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, want-3)
+mark(want-3, If-1)
+nsubj(want-3, you-2)
+nsubj:xsubj(sit-5, you-2)
+mark(sit-5, to-4)
+xcomp(want-3, sit-5)
+case(front-8, at-6)
+det(front-8, the-7)
+nmod:at(sit-5, front-8)
+case(coach-11, of-9)
+det(coach-11, the-10)
+nmod:of(front-8, coach-11)
+
+
+Sentence #2 (8 tokens):
+ask when you get on the coach.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, ask-1)
+advmod(get-4, when-2)
+nsubj(get-4, you-3)
+ccomp(ask-1, get-4)
+case(coach-7, on-5)
+det(coach-7, the-6)
+nmod:on(get-4, coach-7)
+punct(ask-1, .-8)
+
+
+Sentence #3 (7 tokens):
+arrive early on the departure date.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, arrive-1)
+advmod(arrive-1, early-2)
+case(date-6, on-3)
+det(date-6, the-4)
+compound(date-6, departure-5)
+nmod:on(early-2, date-6)
+punct(arrive-1, .-7)
+
+
+Sentence #4 (7 tokens):
+book your seat well in advance.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, book-1)
+nmod:poss(seat-3, your-2)
+dep(book-1, seat-3)
+advmod(advance-6, well-4)
+case(advance-6, in-5)
+nmod:in(seat-3, advance-6)
+punct(book-1, .-7)
+
+
+Sentence #5 (6 tokens):
+avoid travelling at peak times.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, avoid-1)
+xcomp(avoid-1, travelling-2)
+case(times-5, at-3)
+amod(times-5, peak-4)
+nmod:at(travelling-2, times-5)
+punct(avoid-1, .-6)
+
+
+
+Coreference set:
+	(2,7,[6,8]) -> (1,11,[10,12]), that is: "the coach" -> "the coach"
+
+Document: ID=question_10 (5 sentences, 32 tokens)
+
+Sentence #1 (3 tokens):
+Your air tickets
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, air-2)
+nmod:poss(air-2, Your-1)
+dep(air-2, tickets-3)
+
+
+Sentence #2 (8 tokens):
+will be sent to your departure point.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, sent-3)
+aux(sent-3, will-1)
+auxpass(sent-3, be-2)
+case(point-7, to-4)
+nmod:poss(point-7, your-5)
+compound(point-7, departure-6)
+nmod:to(sent-3, point-7)
+punct(sent-3, .-8)
+
+
+Sentence #3 (6 tokens):
+must be collected before leaving.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, collected-3)
+aux(collected-3, must-1)
+auxpass(collected-3, be-2)
+advmod(collected-3, before-4)
+xcomp(collected-3, leaving-5)
+punct(collected-3, .-6)
+
+
+Sentence #4 (7 tokens):
+will be enclosed with other documents.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, enclosed-3)
+aux(enclosed-3, will-1)
+auxpass(enclosed-3, be-2)
+case(documents-6, with-4)
+amod(documents-6, other-5)
+nmod:with(enclosed-3, documents-6)
+punct(enclosed-3, .-7)
+
+
+Sentence #5 (8 tokens):
+may be held by your coach driver.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, held-3)
+aux(held-3, may-1)
+auxpass(held-3, be-2)
+case(driver-7, by-4)
+nmod:poss(driver-7, your-5)
+compound(driver-7, coach-6)
+nmod:agent(held-3, driver-7)
+punct(held-3, .-8)
+
+
+
+Coreference set:
+	(2,5,[5,6]) -> (1,1,[1,2]), that is: "your" -> "Your"
+
+Document: ID=question_11 (5 sentences, 30 tokens)
+
+Sentence #1 (8 tokens):
+If you need a special diet you should
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, need-3)
+mark(need-3, If-1)
+nsubj(need-3, you-2)
+det(diet-6, a-4)
+amod(diet-6, special-5)
+dobj(need-3, diet-6)
+nsubj(should-8, you-7)
+acl:relcl(diet-6, should-8)
+
+
+Sentence #2 (7 tokens):
+inform the hotel when you arrive.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, inform-1)
+det(hotel-3, the-2)
+dobj(inform-1, hotel-3)
+advmod(arrive-6, when-4)
+nsubj(arrive-6, you-5)
+advcl(inform-1, arrive-6)
+punct(inform-1, .-7)
+
+
+Sentence #3 (6 tokens):
+pay extra with the booking.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, pay-1)
+amod(pay-1, extra-2)
+case(booking-5, with-3)
+det(booking-5, the-4)
+nmod:with(pay-1, booking-5)
+punct(pay-1, .-6)
+
+
+Sentence #4 (5 tokens):
+tell the coach company.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, tell-1)
+det(company-4, the-2)
+compound(company-4, coach-3)
+dobj(tell-1, company-4)
+punct(tell-1, .-5)
+
+
+Sentence #5 (4 tokens):
+book tourist class.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, book-1)
+compound(class-3, tourist-2)
+dep(book-1, class-3)
+punct(book-1, .-4)
+
+Document: ID=question_12 (5 sentences, 19 tokens)
+
+Sentence #1 (8 tokens):
+It may be necessary to pay extra for
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, necessary-4)
+nsubj(necessary-4, It-1)
+nsubj:xsubj(pay-6, It-1)
+aux(necessary-4, may-2)
+cop(necessary-4, be-3)
+mark(pay-6, to-5)
+xcomp(necessary-4, pay-6)
+dobj(pay-6, extra-7)
+nmod(pay-6, for-8)
+
+
+Sentence #2 (3 tokens):
+a bathroom.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, bathroom-2)
+det(bathroom-2, a-1)
+punct(bathroom-2, .-3)
+
+
+Sentence #3 (3 tokens):
+boat tickets.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, tickets-2)
+compound(tickets-2, boat-1)
+punct(tickets-2, .-3)
+
+
+Sentence #4 (3 tokens):
+additional luggage.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, luggage-2)
+amod(luggage-2, additional-1)
+punct(luggage-2, .-3)
+
+
+Sentence #5 (2 tokens):
+entertainment.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, entertainment-1)
+punct(entertainment-1, .-2)
+
+Document: ID=question_13 (5 sentences, 21 tokens)
+
+Sentence #1 (3 tokens):
+Entertainment is available
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, available-3)
+nsubj(available-3, Entertainment-1)
+cop(available-3, is-2)
+
+
+Sentence #2 (4 tokens):
+at all hotels.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, hotels-3)
+case(all-2, at-1)
+nmod:at(hotels-3, all-2)
+punct(hotels-3, .-4)
+
+
+Sentence #3 (6 tokens):
+if there is the demand.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, is-3)
+mark(is-3, if-1)
+expl(is-3, there-2)
+det(demand-5, the-4)
+nsubj(is-3, demand-5)
+punct(is-3, .-6)
+
+
+Sentence #4 (3 tokens):
+upon request.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, request-2)
+case(request-2, upon-1)
+punct(request-2, .-3)
+
+
+Sentence #5 (5 tokens):
+for an additional cost.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, cost-4)
+case(cost-4, for-1)
+det(cost-4, an-2)
+amod(cost-4, additional-3)
+punct(cost-4, .-5)
+
+Document: ID=question_14 (5 sentences, 37 tokens)
+
+Sentence #1 (11 tokens):
+With every booking Classic Tours guarantee you will be able to
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, guarantee-6)
+mark(guarantee-6, With-1)
+det(Tours-5, every-2)
+amod(Tours-5, booking-3)
+compound(Tours-5, Classic-4)
+nsubj(guarantee-6, Tours-5)
+nsubj(able-10, you-7)
+aux(able-10, will-8)
+cop(able-10, be-9)
+ccomp(guarantee-6, able-10)
+nmod(able-10, to-11)
+
+
+Sentence #2 (5 tokens):
+request high quality meals.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, request-1)
+amod(meals-4, high-2)
+compound(meals-4, quality-3)
+dep(request-1, meals-4)
+punct(request-1, .-5)
+
+
+Sentence #3 (7 tokens):
+take hand luggage on the coach.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, take-1)
+compound(luggage-3, hand-2)
+dobj(take-1, luggage-3)
+case(coach-6, on-4)
+det(coach-6, the-5)
+nmod:on(take-1, coach-6)
+punct(take-1, .-7)
+
+
+Sentence #4 (6 tokens):
+use your own personal bathroom.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, use-1)
+nmod:poss(bathroom-5, your-2)
+amod(bathroom-5, own-3)
+amod(bathroom-5, personal-4)
+dobj(use-1, bathroom-5)
+punct(use-1, .-6)
+
+
+Sentence #5 (8 tokens):
+see a film if you want to.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, see-1)
+det(film-3, a-2)
+dobj(see-1, film-3)
+mark(want-6, if-4)
+nsubj(want-6, you-5)
+advcl:if(see-1, want-6)
+nmod(want-6, to-7)
+punct(see-1, .-8)

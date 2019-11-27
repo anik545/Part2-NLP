@@ -1,0 +1,768 @@
+Document: ID=A (5 sentences, 41 tokens)
+
+Sentence #1 (3 tokens):
+Filling the reservoir
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Filling-1)
+det(reservoir-3, the-2)
+dobj(Filling-1, reservoir-3)
+
+
+Sentence #2 (10 tokens):
+Your iron is designed to function using tap water.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, designed-4)
+nmod:poss(iron-2, Your-1)
+nsubjpass(designed-4, iron-2)
+nsubj:xsubj(function-6, iron-2)
+auxpass(designed-4, is-3)
+mark(function-6, to-5)
+xcomp(designed-4, function-6)
+xcomp(function-6, using-7)
+compound(water-9, tap-8)
+dobj(using-7, water-9)
+punct(designed-4, .-10)
+
+
+Sentence #3 (12 tokens):
+However, it will last longer if you use distilled water.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, will-4)
+advmod(will-4, However-1)
+punct(will-4, ,-2)
+nsubj(will-4, it-3)
+advmod(longer-6, last-5)
+advmod(use-9, longer-6)
+mark(use-9, if-7)
+nsubj(use-9, you-8)
+advcl:if(will-4, use-9)
+amod(water-11, distilled-10)
+dobj(use-9, water-11)
+punct(will-4, .-12)
+
+
+Sentence #4 (9 tokens):
+Always unplug the iron before filling the reservoir.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, unplug-2)
+advmod(unplug-2, Always-1)
+det(iron-4, the-3)
+dobj(unplug-2, iron-4)
+mark(filling-6, before-5)
+advcl:before(unplug-2, filling-6)
+det(reservoir-8, the-7)
+dobj(filling-6, reservoir-8)
+punct(unplug-2, .-9)
+
+
+Sentence #5 (7 tokens):
+Always empty the reservoir after use.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, empty-2)
+advmod(empty-2, Always-1)
+det(reservoir-4, the-3)
+dep(empty-2, reservoir-4)
+case(use-6, after-5)
+nmod:after(reservoir-4, use-6)
+punct(empty-2, .-7)
+
+
+
+Coreference set:
+	(3,8,[8,9]) -> (2,1,[1,2]), that is: "you" -> "Your"
+
+Coreference set:
+	(3,3,[3,4]) -> (2,2,[1,3]), that is: "it" -> "Your iron"
+	(4,4,[3,5]) -> (2,2,[1,3]), that is: "the iron" -> "Your iron"
+
+Coreference set:
+	(1,3,[2,4]) -> (5,4,[3,7]), that is: "the reservoir" -> "the reservoir after use"
+	(4,8,[7,9]) -> (5,4,[3,7]), that is: "the reservoir" -> "the reservoir after use"
+Document: ID=B (6 sentences, 90 tokens)
+
+Sentence #1 (4 tokens):
+Temperature and steam control
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Temperature-1)
+cc(Temperature-1, and-2)
+compound(control-4, steam-3)
+conj:and(Temperature-1, control-4)
+
+
+Sentence #2 (17 tokens):
+Your Moulex iron has two buttons which control the intensity of heat produced by the iron.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, has-4)
+nmod:poss(iron-3, Your-1)
+amod(iron-3, Moulex-2)
+nsubj(has-4, iron-3)
+nummod(buttons-6, two-5)
+dobj(has-4, buttons-6)
+nsubj(control-8, buttons-6)
+ref(buttons-6, which-7)
+acl:relcl(buttons-6, control-8)
+det(intensity-10, the-9)
+dobj(control-8, intensity-10)
+case(heat-12, of-11)
+nmod:of(intensity-10, heat-12)
+acl(heat-12, produced-13)
+case(iron-16, by-14)
+det(iron-16, the-15)
+nmod:by(produced-13, iron-16)
+punct(has-4, .-17)
+
+
+Sentence #3 (28 tokens):
+You can, therefore, adjust the temperature of the iron and the amount of steam being given off depending upon the type of fabric being ironed.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, adjust-6)
+nsubj(adjust-6, You-1)
+aux(adjust-6, can-2)
+punct(adjust-6, ,-3)
+advmod(adjust-6, therefore-4)
+punct(adjust-6, ,-5)
+det(temperature-8, the-7)
+dobj(adjust-6, temperature-8)
+case(iron-11, of-9)
+det(iron-11, the-10)
+nmod:of(temperature-8, iron-11)
+cc(temperature-8, and-12)
+det(amount-14, the-13)
+dobj(adjust-6, amount-14)
+conj:and(temperature-8, amount-14)
+case(steam-16, of-15)
+nmod:of(amount-14, steam-16)
+auxpass(given-18, being-17)
+xcomp(adjust-6, given-18)
+compound:prt(given-18, off-19)
+case(type-23, depending-20)
+case(type-23, upon-21)
+det(type-23, the-22)
+advcl:upon(given-18, type-23)
+case(fabric-25, of-24)
+nmod:of(type-23, fabric-25)
+auxpass(ironed-27, being-26)
+acl(fabric-25, ironed-27)
+punct(adjust-6, .-28)
+
+
+Sentence #4 (9 tokens):
+Turn the steam control to the desired intensity.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Turn-1)
+det(control-4, the-2)
+compound(control-4, steam-3)
+dobj(Turn-1, control-4)
+case(intensity-8, to-5)
+det(intensity-8, the-6)
+amod(intensity-8, desired-7)
+nmod:to(Turn-1, intensity-8)
+punct(Turn-1, .-9)
+
+
+Sentence #5 (9 tokens):
+Turn the thermostat control to the desired temperature.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Turn-1)
+det(control-4, the-2)
+compound(control-4, thermostat-3)
+dobj(Turn-1, control-4)
+case(temperature-8, to-5)
+det(temperature-8, the-6)
+amod(temperature-8, desired-7)
+nmod:to(Turn-1, temperature-8)
+punct(Turn-1, .-9)
+
+
+Sentence #6 (23 tokens):
+Important: If your iron produces droplets of water instead of giving off steam, your temperature control is set too low.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Important-1)
+punct(Important-1, :-2)
+mark(produces-6, If-3)
+nmod:poss(iron-5, your-4)
+nsubj(produces-6, iron-5)
+advcl:if(set-20, produces-6)
+dobj(produces-6, droplets-7)
+case(water-9, of-8)
+nmod:of(droplets-7, water-9)
+mark(giving-12, instead-10)
+mwe(instead-10, of-11)
+advcl:instead_of(produces-6, giving-12)
+compound:prt(giving-12, off-13)
+dobj(giving-12, steam-14)
+punct(set-20, ,-15)
+nmod:poss(control-18, your-16)
+compound(control-18, temperature-17)
+nsubjpass(set-20, control-18)
+auxpass(set-20, is-19)
+dep(Important-1, set-20)
+advmod(low-22, too-21)
+xcomp(set-20, low-22)
+punct(Important-1, .-23)
+
+
+
+Coreference set:
+	(5,4,[2,5]) -> (4,4,[2,5]), that is: "the thermostat control" -> "the steam control"
+	(6,18,[16,19]) -> (4,4,[2,5]), that is: "your temperature control" -> "the steam control"
+
+Coreference set:
+	(2,16,[15,17]) -> (2,3,[1,4]), that is: "the iron" -> "Your Moulex iron"
+	(3,11,[10,12]) -> (2,3,[1,4]), that is: "the iron" -> "Your Moulex iron"
+
+Document: ID=C (3 sentences, 27 tokens)
+
+Sentence #1 (2 tokens):
+Spray button
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, button-2)
+compound(button-2, Spray-1)
+
+
+Sentence #2 (18 tokens):
+This button activates a jet of cold water which allows you to iron out any unintentional creases.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, activates-3)
+det(button-2, This-1)
+nsubj(activates-3, button-2)
+det(jet-5, a-4)
+dobj(activates-3, jet-5)
+nsubj(allows-10, jet-5)
+case(water-8, of-6)
+amod(water-8, cold-7)
+nmod:of(jet-5, water-8)
+ref(jet-5, which-9)
+acl:relcl(jet-5, allows-10)
+dobj(allows-10, you-11)
+nsubj:xsubj(iron-13, you-11)
+mark(iron-13, to-12)
+xcomp(allows-10, iron-13)
+compound:prt(iron-13, out-14)
+det(creases-17, any-15)
+amod(creases-17, unintentional-16)
+dobj(iron-13, creases-17)
+punct(activates-3, .-18)
+
+
+Sentence #3 (7 tokens):
+Press the button for one second.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Press-1)
+det(button-3, the-2)
+dep(Press-1, button-3)
+case(second-6, for-4)
+nummod(second-6, one-5)
+nmod:for(button-3, second-6)
+punct(Press-1, .-7)
+
+
+
+Coreference set:
+	(2,2,[1,3]) -> (1,2,[1,3]), that is: "This button" -> "Spray button"
+
+
+
+
+Document: ID=D (3 sentences, 34 tokens)
+
+Sentence #1 (2 tokens):
+Pressing button
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Pressing-1)
+dobj(Pressing-1, button-2)
+
+
+Sentence #2 (20 tokens):
+This button activates a super shot of steam which momentarily gives you an additional 40g of steam when needed.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, activates-3)
+det(button-2, This-1)
+nsubj(activates-3, button-2)
+det(shot-6, a-4)
+amod(shot-6, super-5)
+dobj(activates-3, shot-6)
+nsubj(gives-11, shot-6)
+case(steam-8, of-7)
+nmod:of(shot-6, steam-8)
+ref(shot-6, which-9)
+advmod(gives-11, momentarily-10)
+acl:relcl(shot-6, gives-11)
+iobj(gives-11, you-12)
+det(40g-15, an-13)
+amod(40g-15, additional-14)
+dobj(gives-11, 40g-15)
+case(steam-17, of-16)
+nmod:of(40g-15, steam-17)
+advmod(needed-19, when-18)
+advcl(activates-3, needed-19)
+punct(activates-3, .-20)
+
+
+Sentence #3 (12 tokens):
+Important: Do not use this more than five successive times.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Important-1)
+punct(Important-1, :-2)
+aux(use-5, Do-3)
+neg(use-5, not-4)
+dep(Important-1, use-5)
+det(times-11, this-6)
+advmod(five-9, more-7)
+mwe(more-7, than-8)
+nummod(times-11, five-9)
+amod(times-11, successive-10)
+dobj(use-5, times-11)
+punct(Important-1, .-12)
+
+
+Document: ID=E (7 sentences, 123 tokens)
+
+Sentence #1 (3 tokens):
+Suits etc.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Suits-1)
+dep(Suits-1, etc.-2)
+punct(Suits-1, .-3)
+
+
+Sentence #2 (25 tokens):
+It is possible to use this iron in a vertical position so that you can remove creases from clothes on coathangers or from curtains.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, possible-3)
+nsubj(possible-3, It-1)
+nsubj:xsubj(use-5, It-1)
+cop(possible-3, is-2)
+mark(use-5, to-4)
+xcomp(possible-3, use-5)
+det(iron-7, this-6)
+dobj(use-5, iron-7)
+case(position-11, in-8)
+det(position-11, a-9)
+amod(position-11, vertical-10)
+nmod:in(use-5, position-11)
+mark(remove-16, so-12)
+mwe(so-12, that-13)
+nsubj(remove-16, you-14)
+nsubj(remove-16', you-14)
+aux(remove-16, can-15)
+advcl:so_that(use-5, remove-16)
+advcl:so_that(use-5, remove-16')
+conj:or(remove-16, remove-16')
+dobj(remove-16, creases-17)
+case(clothes-19, from-18)
+nmod:from(remove-16, clothes-19)
+case(coathangers-21, on-20)
+nmod:on(clothes-19, coathangers-21)
+cc(remove-16, or-22)
+case(curtains-24, from-23)
+nmod:from(remove-16', curtains-24)
+punct(possible-3, .-25)
+
+
+Sentence #3 (27 tokens):
+Turning the thermostat control and the steam button to maximum, hold the iron in a vertical position close to the fabric but without touching it.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, hold-12)
+dep(hold-12, Turning-1)
+det(control-4, the-2)
+compound(control-4, thermostat-3)
+dobj(Turning-1, control-4)
+cc(control-4, and-5)
+det(button-8, the-6)
+compound(button-8, steam-7)
+dobj(Turning-1, button-8)
+conj:and(control-4, button-8)
+case(maximum-10, to-9)
+nmod:to(Turning-1, maximum-10)
+punct(hold-12, ,-11)
+det(iron-14, the-13)
+dobj(hold-12, iron-14)
+case(fabric-22, in-15)
+det(fabric-22, a-16)
+amod(fabric-22, vertical-17)
+compound(fabric-22, position-18)
+case(fabric-22, close-19)
+mwe(close-19, to-20)
+det(fabric-22, the-21)
+nmod:close_to(iron-14, fabric-22)
+cc(touching-25, but-23)
+mark(touching-25, without-24)
+dep(hold-12, touching-25)
+dobj(touching-25, it-26)
+punct(hold-12, .-27)
+
+
+Sentence #4 (12 tokens):
+Hold down the pressing button for a maximum of one second.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Hold-1)
+compound:prt(Hold-1, down-2)
+det(button-5, the-3)
+amod(button-5, pressing-4)
+dobj(Hold-1, button-5)
+case(maximum-8, for-6)
+det(maximum-8, a-7)
+nmod:for(button-5, maximum-8)
+case(second-11, of-9)
+nummod(second-11, one-10)
+nmod:of(maximum-8, second-11)
+punct(Hold-1, .-12)
+
+
+Sentence #5 (15 tokens):
+The steam produced is not always visible but is still able to remove creases.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, visible-7)
+det(steam-2, The-1)
+nsubj(visible-7, steam-2)
+nsubj(able-11, steam-2)
+nsubj:xsubj(remove-13, steam-2)
+acl(steam-2, produced-3)
+cop(visible-7, is-4)
+neg(visible-7, not-5)
+advmod(visible-7, always-6)
+cc(visible-7, but-8)
+cop(able-11, is-9)
+advmod(able-11, still-10)
+conj:but(visible-7, able-11)
+mark(remove-13, to-12)
+xcomp(able-11, remove-13)
+dobj(remove-13, creases-14)
+punct(visible-7, .-15)
+
+
+Sentence #6 (20 tokens):
+Important: Hold the iron at a sufficient distance from silk and wool to avoid all risk of scorching.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Important-1)
+punct(Important-1, :-2)
+dep(Important-1, Hold-3)
+det(iron-5, the-4)
+dobj(Hold-3, iron-5)
+case(distance-9, at-6)
+det(distance-9, a-7)
+amod(distance-9, sufficient-8)
+nmod:at(iron-5, distance-9)
+case(silk-11, from-10)
+nmod:from(Hold-3, silk-11)
+cc(silk-11, and-12)
+nmod:from(Hold-3, wool-13)
+conj:and(silk-11, wool-13)
+mark(avoid-15, to-14)
+advcl:to(Hold-3, avoid-15)
+det(risk-17, all-16)
+dobj(avoid-15, risk-17)
+case(scorching-19, of-18)
+nmod:of(risk-17, scorching-19)
+punct(Important-1, .-20)
+
+
+Sentence #7 (21 tokens):
+Do not attempt to remove creases from an item of clothing that is being worn, always use a coathanger.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, use-18)
+aux(attempt-3, Do-1)
+neg(attempt-3, not-2)
+ccomp(use-18, attempt-3)
+mark(remove-5, to-4)
+xcomp(attempt-3, remove-5)
+dobj(remove-5, creases-6)
+case(item-9, from-7)
+det(item-9, an-8)
+nmod:from(remove-5, item-9)
+nsubjpass(worn-15, item-9)
+case(clothing-11, of-10)
+nmod:of(item-9, clothing-11)
+ref(item-9, that-12)
+aux(worn-15, is-13)
+auxpass(worn-15, being-14)
+acl:relcl(item-9, worn-15)
+punct(use-18, ,-16)
+advmod(use-18, always-17)
+det(coathanger-20, a-19)
+dobj(use-18, coathanger-20)
+punct(use-18, .-21)
+
+
+
+Coreference set:
+	(3,26,[26,27]) -> (3,22,[21,23]), that is: "it" -> "the fabric"
+Document: ID=F (7 sentences, 101 tokens)
+
+Sentence #1 (1 tokens):
+Auto-clean
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Auto-clean-1)
+
+
+Sentence #2 (33 tokens):
+In order that your iron does not become furred up, Moulex have integrated an autoclean system and we advise you to use it very regularly (12 times per month).
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, integrated-14)
+case(order-2, In-1)
+dobj(furred-9, order-2)
+nmod:in(integrated-14, order-2)
+ref(order-2, that-3)
+nmod:poss(iron-5, your-4)
+nsubj(become-8, iron-5)
+aux(become-8, does-6)
+neg(become-8, not-7)
+acl:relcl(order-2, become-8)
+xcomp(become-8, furred-9)
+compound:prt(furred-9, up-10)
+punct(integrated-14, ,-11)
+nsubj(integrated-14, Moulex-12)
+aux(integrated-14, have-13)
+det(system-17, an-15)
+amod(system-17, autoclean-16)
+dobj(integrated-14, system-17)
+cc(integrated-14, and-18)
+nsubj(advise-20, we-19)
+conj:and(integrated-14, advise-20)
+dobj(advise-20, you-21)
+nsubj:xsubj(use-23, you-21)
+mark(use-23, to-22)
+xcomp(advise-20, use-23)
+dobj(use-23, it-24)
+advmod(regularly-26, very-25)
+advmod(use-23, regularly-26)
+punct(times-29, -LRB--27)
+compound(times-29, 12-28)
+dep(regularly-26, times-29)
+case(month-31, per-30)
+nmod:per(times-29, month-31)
+punct(times-29, -RRB--32)
+punct(integrated-14, .-33)
+
+
+Sentence #3 (9 tokens):
+Turn the steam control to the off position.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Turn-1)
+det(control-4, the-2)
+compound(control-4, steam-3)
+dobj(Turn-1, control-4)
+case(position-8, to-5)
+det(position-8, the-6)
+amod(position-8, off-7)
+nmod:to(Turn-1, position-8)
+punct(Turn-1, .-9)
+
+
+Sentence #4 (11 tokens):
+Fill the reservoir and turn the thermostat control to maximum.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Fill-1)
+det(reservoir-3, the-2)
+dobj(Fill-1, reservoir-3)
+cc(Fill-1, and-4)
+conj:and(Fill-1, turn-5)
+det(control-8, the-6)
+compound(control-8, thermostat-7)
+dobj(turn-5, control-8)
+case(maximum-10, to-9)
+nmod:to(turn-5, maximum-10)
+punct(Fill-1, .-11)
+
+
+Sentence #5 (27 tokens):
+As soon as the indicator light goes out, unplug the iron and, holding it over the sink, turn the steam control to auto-clean.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, unplug-10)
+advmod(soon-2, As-1)
+advmod(goes-7, soon-2)
+mark(goes-7, as-3)
+det(light-6, the-4)
+compound(light-6, indicator-5)
+nsubj(goes-7, light-6)
+dep(unplug-10, goes-7)
+compound:prt(goes-7, out-8)
+punct(unplug-10, ,-9)
+det(iron-12, the-11)
+dobj(unplug-10, iron-12)
+cc(unplug-10, and-13)
+punct(holding-15, ,-14)
+parataxis(turn-21, holding-15)
+dobj(holding-15, it-16)
+case(sink-19, over-17)
+det(sink-19, the-18)
+nmod:over(holding-15, sink-19)
+punct(holding-15, ,-20)
+conj:and(unplug-10, turn-21)
+det(control-24, the-22)
+compound(control-24, steam-23)
+dobj(turn-21, control-24)
+case(auto-clean-26, to-25)
+nmod:to(turn-21, auto-clean-26)
+punct(unplug-10, .-27)
+
+
+Sentence #6 (11 tokens):
+Any calcium deposits will be washed out by the steam.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, washed-6)
+det(deposits-3, Any-1)
+compound(deposits-3, calcium-2)
+nsubjpass(washed-6, deposits-3)
+aux(washed-6, will-4)
+auxpass(washed-6, be-5)
+compound:prt(washed-6, out-7)
+case(steam-10, by-8)
+det(steam-10, the-9)
+nmod:agent(washed-6, steam-10)
+punct(washed-6, .-11)
+
+
+Sentence #7 (9 tokens):
+Continue the procedure until the reservoir is empty.
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, Continue-1)
+det(procedure-3, the-2)
+dobj(Continue-1, procedure-3)
+mark(empty-8, until-4)
+det(reservoir-6, the-5)
+nsubj(empty-8, reservoir-6)
+cop(empty-8, is-7)
+advcl:until(Continue-1, empty-8)
+punct(Continue-1, .-9)
+
+
+
+Coreference set:
+	(5,12,[11,13]) -> (2,5,[4,6]), that is: "the iron" -> "your iron"
+	(5,16,[16,17]) -> (2,5,[4,6]), that is: "it" -> "your iron"
+
+Coreference set:
+	(5,24,[22,25]) -> (3,4,[2,5]), that is: "the steam control" -> "the steam control"
+
+Coreference set:
+	(2,24,[24,25]) -> (2,17,[15,18]), that is: "it" -> "an autoclean system"
+
+Coreference set:
+	(7,6,[5,7]) -> (4,3,[2,4]), that is: "the reservoir" -> "the reservoir"
+
+Document: ID=questions (5 sentences, 60 tokens)
+
+Sentence #1 (10 tokens):
+What sort of water are you advised to use?
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, advised-7)
+det(sort-2, What-1)
+dep(advised-7, sort-2)
+case(water-4, of-3)
+nmod:of(sort-2, water-4)
+auxpass(advised-7, are-5)
+nsubjpass(advised-7, you-6)
+nsubj:xsubj(use-9, you-6)
+mark(use-9, to-8)
+xcomp(advised-7, use-9)
+punct(advised-7, ?-10)
+
+
+Sentence #2 (13 tokens):
+What factor makes you decide on the quantity of steam to use?
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, makes-3)
+det(factor-2, What-1)
+nsubj(makes-3, factor-2)
+nsubj(decide-5, you-4)
+nsubj:xsubj(use-12, you-4)
+ccomp(makes-3, decide-5)
+case(quantity-8, on-6)
+det(quantity-8, the-7)
+nmod:on(decide-5, quantity-8)
+case(steam-10, of-9)
+nmod:of(quantity-8, steam-10)
+mark(use-12, to-11)
+xcomp(decide-5, use-12)
+punct(makes-3, ?-13)
+
+
+Sentence #3 (12 tokens):
+What should you do if your iron starts to drip water?
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, do-4)
+dobj(do-4, What-1)
+aux(do-4, should-2)
+nsubj(do-4, you-3)
+mark(starts-8, if-5)
+nmod:poss(iron-7, your-6)
+nsubj(starts-8, iron-7)
+nsubj:xsubj(drip-10, iron-7)
+advcl:if(do-4, starts-8)
+mark(drip-10, to-9)
+xcomp(starts-8, drip-10)
+dobj(drip-10, water-11)
+punct(do-4, ?-12)
+
+
+Sentence #4 (12 tokens):
+What could damage your iron if you do not clean it?
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, damage-3)
+nsubj(damage-3, What-1)
+aux(damage-3, could-2)
+nmod:poss(iron-5, your-4)
+dobj(damage-3, iron-5)
+mark(do-8, if-6)
+nsubj(do-8, you-7)
+advcl:if(damage-3, do-8)
+neg(clean-10, not-9)
+xcomp(do-8, clean-10)
+xcomp(do-8, it-11)
+punct(damage-3, ?-12)
+
+
+Sentence #5 (13 tokens):
+Which misuse of the iron could result in a person getting hurt?
+
+Dependency Parse (enhanced plus plus dependencies):
+root(ROOT-0, result-7)
+det(misuse-2, Which-1)
+nsubj(result-7, misuse-2)
+case(iron-5, of-3)
+det(iron-5, the-4)
+nmod:of(misuse-2, iron-5)
+aux(result-7, could-6)
+case(person-10, in-8)
+det(person-10, a-9)
+nmod:in(result-7, person-10)
+acl(person-10, getting-11)
+dep(getting-11, hurt-12)
+punct(result-7, ?-13)

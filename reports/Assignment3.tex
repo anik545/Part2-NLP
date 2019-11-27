@@ -1,18 +1,35 @@
-\documentclass[12pt,a4paper,twocolumn]{article}
+\documentclass[12pt,a4paper]{article}
 \usepackage[parfill]{parskip}
 \usepackage{fullpage}
 \usepackage{enumitem}
 \usepackage{hyperref}
+\usepackage{tikz-dependency}
 \bibliographystyle{plain}
 
 
 \begin{document}
 
-\include{propbody}
+\centerline{\large NLP Assignment 3}
+\vspace{0.2in}
+\centerline{\Large\bf Text Understanding}
+\vspace{0.1in}
+\centerline{\large {Anik Roy, Christ's (ar899)}}
+\vspace{0.1in}
+\centerline{\large {\today}}
+\vspace{0.05in}
+\centerline{Total Word Count: 999\footnote{Using texcount}}
+\vspace{0.2in}
 
 
 
-\clearpage
+\section*{Task 1}
+
+The question \textit{What sort of water are you advised to use?} has the answer \textit{distilled water}, but a question answering would likely return two possible answers - tap water \textbf{and} distilled water. In both relevant sentences, 'water' is dependent on a form of the verb 'use' with the direct object (dobj) type. Both 'distilled' and 'tap' are dependents of water, and so are the modifiers of 'water', as required by the question.
+
+The second question is more difficult, since the words in the question are not directly present in the text, e.g. 'pay extra' in the question relates to 'supplementary charge' in the text. This requires us to find a way to find similar words and phrases.
+
+\section*{Task 2}
+\section*{Task 3}
 
 \bibliography{refs}
 
