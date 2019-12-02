@@ -2,7 +2,7 @@ from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 import numpy as np
 from load_files import files_to_wordlists, load_all_docs, load_all_pang_docs
 from cross_validate import validation_set
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 from gensim.models.callbacks import CallbackAny2Vec
 from svmlight import learn, classify, read_model
 
@@ -20,7 +20,7 @@ class EpochLogger(CallbackAny2Vec):
         self.epoch += 1
 
 
-MODEL_DIR_PATH = "/mnt/c/Users/Anik/Files/Work/units/NLP/assignment2/models/"
+MODEL_DIR_PATH = "/home/ar899/Part2-NLP/assignment2/models/"
 
 
 class Doc2VecSVM(object):
@@ -41,10 +41,15 @@ class Doc2VecSVM(object):
         model.delete_temporary_training_data(
             keep_doctags_vectors=True, keep_inference=True)
         self.doc2vec_model = model
-
-        with open("/mnt/c/Users/Anik/Files/Work/units/NLP/assignment2/models/model_"+str(self.doc2vec_args), 'w') as f:
-            model.save(f)
+        fname=  MODEL_DIR_PATH+"model_" + self.args_str(self.doc2vec_args)
+        model.save(fname)
         print("*** DOC2VEC TRAINED ***")
+
+    def args_str(self, args):
+        s = ""
+        for a,v in args.items():
+            s += str(a) + str(v) + "_"
+        return s
 
     def set_model(self, model_name):
         self.doc2vec_model = Doc2Vec.load(MODEL_DIR_PATH + model_name)
@@ -96,7 +101,5 @@ if __name__ == "__main__":
 
     pang_docs = load_all_pang_docs()
     validation, the_rest = validation_set(pang_docs)
-    # TODO maybe try using presence in loading pang_docs - does it even effect anything, since we're not using count vectors here?
-    # Actually, probably shouldn't use presence here
     run_with_args({'dm':0,'epochs':10, 'vector_size':120, 'min_count':2, 'window':7}, the_rest, validation)
     run_with_args({'dm':0,'epochs':10, 'vector_size':120, 'min_count':2, 'window':7, 'dbow_words': 1}, the_rest, validation)

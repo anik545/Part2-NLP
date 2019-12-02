@@ -292,3 +292,5 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+
+venv/

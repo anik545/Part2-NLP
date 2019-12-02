@@ -1,8 +1,10 @@
 import os
 import glob
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 
-DATA_DIR = "/mnt/c/Users/Anik/Files/Work/units/NLP/data/aclImdb/"
+DATA_DIR = "/home/ar899/Part2-NLP/data/aclImdb/"
+PANG_DATA_DIR = "/home/ar899/Part2-NLP/data/part1/"
+ALL_DOCS_FILE = "/home/ar899/Part2-NLP/assignment2/all_docs.txt"
 
 folders = ["test/neg/", "test/pos/", "test/unsup/",
            "train/neg/", "train/pos/", "train/unsup/"]
@@ -21,7 +23,7 @@ def _load_all_docs():
 
 
 def load_all_docs():
-    with open("/mnt/c/Users/Anik/Files/Work/units/NLP/assignment2/all_docs.txt", "r") as f:
+    with open(ALL_DOCS_FILE, "r") as f:
         docs = []
         for line in tqdm(f.readlines(), desc="Loading files"):
             docs.append(line.split(' '))
@@ -30,7 +32,6 @@ def load_all_docs():
     return docs
 
 
-PANG_DATA_DIR = "/mnt/c/Users/Anik/Files/Work/units/NLP/data/part1/"
 
 pang_folders = ['NEG', 'POS']
 
