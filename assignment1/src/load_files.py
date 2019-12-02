@@ -20,7 +20,6 @@ def files_to_wordlists(paths, transform=lambda x: x):
     data = list(filter(lambda x: x != '', data))
     return data
 
-
 def get_word_counts(wordlists, presence=False):
     if presence:
         wordlists = [set(l) for l in wordlists]

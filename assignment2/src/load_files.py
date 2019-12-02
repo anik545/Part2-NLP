@@ -1,6 +1,7 @@
 import os
 import glob
 from tqdm.notebook import tqdm
+from collections import Counter
 
 DATA_DIR = "/mnt/c/Users/Anik/Files/Work/units/NLP/data/aclImdb/"
 
@@ -57,6 +58,14 @@ def files_to_wordlists(paths, transform=lambda x: x):
     data = list(filter(lambda x: x != '', data))
     return data
 
+
+def get_word_counts(wordlists, presence=False):
+    if presence:
+        wordlists = [set(l) for l in wordlists]
+    word_counts = Counter()
+    for l in wordlists:
+        word_counts.update(l)
+    return word_counts
 
 if __name__ == "__main__":
     load_all_pang_docs()

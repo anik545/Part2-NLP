@@ -24,9 +24,6 @@ def permutation_test(systemAcorrects, systemBcorrects):
     # TODO: should this be > or >= ???
     s = sum(1.0 if diff >= original_diff else 0.0 for diff in diffs)
 
-    print(diffs)
-    print(s)
-
     p = (s + 1.0) / (R + 1.0)
 
     return p

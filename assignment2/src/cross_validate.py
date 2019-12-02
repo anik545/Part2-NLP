@@ -32,6 +32,8 @@ def cross_validate(system, docs):
         c, p = system.evaluate(test)
         corrects.append(c)
         ps.append(p)
+        print("Split ", x, ", accuracy: ", p)
+    print()
     return np.mean(np.array(ps)), corrects
 
 def permutation_test_and_cv(systemA, systemB, docs):

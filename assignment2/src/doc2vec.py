@@ -26,15 +26,17 @@ MODEL_DIR_PATH = "/mnt/c/Users/Anik/Files/Work/units/NLP/assignment2/models/"
 class Doc2VecSVM(object):
 
     def __init__(self, doc2vec_args={}, doc2vec_model=None, svm_model=None, doc2vec_train_docs=None):
-        if doc2vec_train_docs is None:
-            self.doc2vec_train_docs = load_all_docs()
-        else:
-            self.doc2vec_train_docs = doc2vec_train_docs
+        
+        self.doc2vec_train_docs = doc2vec_train_docs
         self.doc2vec_model = Doc2Vec.load(MODEL_DIR_PATH + doc2vec_model) if doc2vec_model else None
         self.svm_model = read_model(svm_model) if svm_model else None
         self.doc2vec_args = doc2vec_args
 
     def train_doc_vec(self, docs):
+        if docs is None:
+            docs = load_all_docs()
+            self.doc2vec_train_docs = docs
+
         documents = tqdm([TaggedDocument(doc, [i]) for i, doc in enumerate(
             docs)], desc="Loading tagged docs into model")
         model = Doc2Vec(documents, callbacks=[EpochLogger()], **self.doc2vec_args)
@@ -42,9 +44,15 @@ class Doc2VecSVM(object):
             keep_doctags_vectors=True, keep_inference=True)
         self.doc2vec_model = model
 
-        with open("/mnt/c/Users/Anik/Files/Work/units/NLP/assignment2/models/model_"+str(self.doc2vec_args), 'w') as f:
+        with open(MODEL_DIR_PATH+"/model_"+self.args_str(self.doc2vec_args), 'w') as f:
             model.save(f)
         print("*** DOC2VEC TRAINED ***")
+
+    def args_str(self, args):
+        s = ""
+        for a,v in args.items():
+            s += str(a) + str(v) + "_"
+        return s
 
     def set_model(self, model_name):
         self.doc2vec_model = Doc2Vec.load(MODEL_DIR_PATH + model_name)
@@ -81,11 +89,11 @@ class Doc2VecSVM(object):
         return (corrects, float(sum(corrects))/len(corrects))
 
 
-def run_with_args(args, pang_svm_train, validation):
-    defaults = {'vector_size':100, 'window':2, 'min_count':1, 'workers':4, 'seed':0}
+def run_with_args(args, pang_svm_train, validation, all_docs=None):
+    defaults = {'vector_size':100, 'window':2, 'min_count':1, 'workers':4, 'seed':0, 'dbow_words':1}
     defaults.update(args)
     print(defaults)
-    model = Doc2VecSVM(doc2vec_args=defaults)
+    model = Doc2VecSVM(doc2vec_args=defaults, doc2vec_train_docs=all_docs)
     model.train(pang_svm_train)
     c, p = model.evaluate(validation)
     print(args, p)
@@ -98,5 +106,5 @@ if __name__ == "__main__":
     validation, the_rest = validation_set(pang_docs)
     # TODO maybe try using presence in loading pang_docs - does it even effect anything, since we're not using count vectors here?
     # Actually, probably shouldn't use presence here
-    run_with_args({'dm':0,'epochs':10, 'vector_size':120, 'min_count':2, 'window':7}, the_rest, validation)
+    # run_with_args({'dm':0,'epochs':10, 'vector_size':120, 'min_count':2, 'window':7}, the_rest, validation)
     run_with_args({'dm':0,'epochs':10, 'vector_size':120, 'min_count':2, 'window':7, 'dbow_words': 1}, the_rest, validation)
