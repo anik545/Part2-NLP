@@ -40,11 +40,17 @@ class Doc2VecSVM(object):
         documents = tqdm([TaggedDocument(doc, [i]) for i, doc in enumerate(
             docs)], desc="Loading tagged docs into model")
         model = Doc2Vec(documents, callbacks=[EpochLogger()], **self.doc2vec_args)
-        model.delete_temporary_training_data(
-            keep_doctags_vectors=True, keep_inference=True)
         self.doc2vec_model = model
+<<<<<<< HEAD
         fname=  MODEL_DIR_PATH+"model_" + self.args_str(self.doc2vec_args)
         model.save(fname)
+=======
+
+        fname = MODEL_DIR_PATH + "/model_" + self.args_str(self.doc2vec_args)
+        model.save(fname)
+
+        model.delete_temporary_training_data(keep_doctags_vectors=True, keep_inference=True)
+>>>>>>> 6fbc6eff939f664518245e4c1eb571ae147486f9
         print("*** DOC2VEC TRAINED ***")
 
     def args_str(self, args):
@@ -103,5 +109,9 @@ if __name__ == "__main__":
 
     pang_docs = load_all_pang_docs()
     validation, the_rest = validation_set(pang_docs)
-    run_with_args({'dm':0,'epochs':10, 'vector_size':120, 'min_count':2, 'window':7}, the_rest, validation)
-    run_with_args({'dm':0,'epochs':10, 'vector_size':120, 'min_count':2, 'window':7, 'dbow_words': 1}, the_rest, validation)
+    # TODO maybe try using presence in loading pang_docs - does it even effect anything, since we're not using count vectors here?
+    # Actually, probably shouldn't use presence here
+    # run_with_args({'dm':0,'epochs':10, 'vector_size':120, 'min_count':2, 'window':7}, the_rest, validation)
+    run_with_args({'dm':0,'epochs':5, 'vector_size':180, 'min_count': 10, 'window':7, 'dbow_words': 1, 'hs':1}, the_rest, validation)
+    run_with_args({'dm':0,'epochs':7, 'vector_size':150, 'min_count': 18, 'window':7, 'dbow_words': 1, 'hs':1}, the_rest, validation)
+    run_with_args({'dm':0,'epochs':10, 'vector_size':130, 'min_count': 14, 'window':6, 'dbow_words': 1, 'hs':1}, the_rest, validation)
