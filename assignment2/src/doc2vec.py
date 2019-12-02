@@ -26,15 +26,17 @@ MODEL_DIR_PATH = "/home/ar899/Part2-NLP/assignment2/models/"
 class Doc2VecSVM(object):
 
     def __init__(self, doc2vec_args={}, doc2vec_model=None, svm_model=None, doc2vec_train_docs=None):
-        if doc2vec_train_docs is None:
-            self.doc2vec_train_docs = load_all_docs()
-        else:
-            self.doc2vec_train_docs = doc2vec_train_docs
+        
+        self.doc2vec_train_docs = doc2vec_train_docs
         self.doc2vec_model = Doc2Vec.load(MODEL_DIR_PATH + doc2vec_model) if doc2vec_model else None
         self.svm_model = read_model(svm_model) if svm_model else None
         self.doc2vec_args = doc2vec_args
 
     def train_doc_vec(self, docs):
+        if docs is None:
+            docs = load_all_docs()
+            self.doc2vec_train_docs = docs
+
         documents = tqdm([TaggedDocument(doc, [i]) for i, doc in enumerate(
             docs)], desc="Loading tagged docs into model")
         model = Doc2Vec(documents, callbacks=[EpochLogger()], **self.doc2vec_args)
@@ -86,11 +88,11 @@ class Doc2VecSVM(object):
         return (corrects, float(sum(corrects))/len(corrects))
 
 
-def run_with_args(args, pang_svm_train, validation):
-    defaults = {'vector_size':100, 'window':2, 'min_count':1, 'workers':4, 'seed':0}
+def run_with_args(args, pang_svm_train, validation, all_docs=None):
+    defaults = {'vector_size':100, 'window':2, 'min_count':1, 'workers':4, 'seed':0, 'dbow_words':1}
     defaults.update(args)
     print(defaults)
-    model = Doc2VecSVM(doc2vec_args=defaults)
+    model = Doc2VecSVM(doc2vec_args=defaults, doc2vec_train_docs=all_docs)
     model.train(pang_svm_train)
     c, p = model.evaluate(validation)
     print(args, p)

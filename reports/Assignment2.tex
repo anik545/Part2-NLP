@@ -11,7 +11,7 @@
 
 \begin{document}
 
-\centerline{\large NLP Assignment 1}
+\centerline{\large NLP Assignment 2}
 \vspace{0.2in}
 \centerline{\Large\bf SVM-based Sentiment Detection of Reviews}
 \vspace{0.1in}
@@ -26,11 +26,17 @@
 \begin{multicols}{2}
   
 \section{Introduction}
-\blindtext
+
+Support vector machines are an ML model which can be used to classify vectors in a vector space. This method can be applied to the task of classifying documents by representing each document as a vector. In this report, we choose to use a neural model, doc2vec \cite{}, in order to generate vectors. We also [TODO] to show that the vector space produced by the doc2vec model is meaningful, by finding the distances between 
+
 \section{Background}
 \blindtext
 \section{Method}
-\blindtext
+
+The doc2vec implementation used was gensim \cite{gensim}.
+
+I train the doc2vec model on 100,000 movie reviews from the Stanford Large Movie Review Dataset \cite{maas-EtAl:2011:ACL-HLT2011}. The SVM classifier is then trained on the documents found in the dataset used by pang et al. \cite{pang2002thumbs}. To tune parameters for the doc2vec model, I use a 10\% validation set to evaluate different models, then report accuracies using 10-fold cross validation over the remaining 90\%.
+
 \section{Results}
 \blindtext
 \section{Conclusions}
