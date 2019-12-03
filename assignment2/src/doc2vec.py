@@ -6,6 +6,7 @@ from tqdm import tqdm
 from gensim.models.callbacks import CallbackAny2Vec
 from svmlight import learn, classify, read_model
 
+
 class EpochLogger(CallbackAny2Vec):
     '''Callback to save model after each epoch and show training parameters '''
 
@@ -26,9 +27,10 @@ MODEL_DIR_PATH = "/home/ar899/Part2-NLP/assignment2/models/"
 class Doc2VecSVM(object):
 
     def __init__(self, doc2vec_args={}, doc2vec_model=None, svm_model=None, doc2vec_train_docs=None):
-        
+
         self.doc2vec_train_docs = doc2vec_train_docs
-        self.doc2vec_model = Doc2Vec.load(MODEL_DIR_PATH + doc2vec_model) if doc2vec_model else None
+        self.doc2vec_model = Doc2Vec.load(
+            MODEL_DIR_PATH + doc2vec_model) if doc2vec_model else None
         self.svm_model = read_model(svm_model) if svm_model else None
         self.doc2vec_args = doc2vec_args
 
@@ -37,17 +39,19 @@ class Doc2VecSVM(object):
             docs = load_all_docs()
             self.doc2vec_train_docs = docs
 
-        documents = tqdm([TaggedDocument(doc, [i]) for i, doc in enumerate(
-            docs)], desc="Loading tagged docs into model")
-        model = Doc2Vec(documents, callbacks=[EpochLogger()], **self.doc2vec_args)
+        documents = tqdm([TaggedDocument(doc, [i]) for i, doc in enumerate(docs)],
+                         desc="Loading tagged docs into model")
+
+        model = Doc2Vec(documents, callbacks=[
+                        EpochLogger()], **self.doc2vec_args)
+
         self.doc2vec_model = model
-        fname=  MODEL_DIR_PATH+"model_" + self.args_str(self.doc2vec_args)
-        model.save(fname)
+
         print("*** DOC2VEC TRAINED ***")
 
     def args_str(self, args):
         s = ""
-        for a,v in args.items():
+        for a, v in args.items():
             s += str(a) + str(v) + "_"
         return s
 
@@ -82,19 +86,20 @@ class Doc2VecSVM(object):
         predictions = ["POS" if p > 0 else "NEG" for p in predictions]
         corrects = [True if predictions[i] == test_docs[i][0]
                     else False for i in range(len(predictions))]
-
-        return (corrects, float(sum(corrects))/len(corrects))
+        acc = float(sum(corrects))/len(corrects)
+        return (corrects, acc)
 
 
 def run_with_args(args, pang_svm_train, validation, all_docs=None):
-    defaults = {'vector_size':100, 'window':2, 'min_count':1, 'workers':4, 'seed':0, 'dbow_words':1}
+    defaults = {'vector_size': 100, 'window': 2, 'min_count': 1,
+                'workers': 4, 'seed': 0, 'dbow_words': 1}
     defaults.update(args)
     print(defaults)
     model = Doc2VecSVM(doc2vec_args=defaults, doc2vec_train_docs=all_docs)
     model.train(pang_svm_train)
     c, p = model.evaluate(validation)
     print(args, p)
-    return (args,p)
+    return (args, p)
 
 
 if __name__ == "__main__":
@@ -104,6 +109,9 @@ if __name__ == "__main__":
     # TODO maybe try using presence in loading pang_docs - does it even effect anything, since we're not using count vectors here?
     # Actually, probably shouldn't use presence here
     # run_with_args({'dm':0,'epochs':10, 'vector_size':120, 'min_count':2, 'window':7}, the_rest, validation)
-    run_with_args({'dm':0,'epochs':5, 'vector_size':300, 'min_count': 20, 'window':5, 'dbow_words': 1, 'hs':1}, the_rest, validation)
-    run_with_args({'dm':0,'epochs':7, 'vector_size':150, 'min_count': 18, 'window':7, 'dbow_words': 1, 'hs':1}, the_rest, validation)
-    run_with_args({'dm':0,'epochs':10, 'vector_size':130, 'min_count': 14, 'window':6, 'dbow_words': 1, 'hs':1}, the_rest, validation)
+    run_with_args({'dm': 0, 'epochs': 5, 'vector_size': 120, 'min_count':   15,
+                    'window': 7, 'dbow_words': 1, 'hs': 1}, the_rest, validation)
+    # run_with_args({'dm': 0, 'epochs': 7, 'vector_size': 150, 'min_count': 18,
+    #                'window': 7, 'dbow_words': 1, 'hs': 1}, the_rest, validation)
+    # run_with_args({'dm': 0, 'epochs': 10, 'vector_size': 130, 'min_count': 14,
+    #                'window': 6, 'dbow_words': 1, 'hs': 1}, the_rest, validation)

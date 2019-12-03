@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[a4paper]{article}
 \usepackage[parfill]{parskip}
 \usepackage{fullpage}
 \usepackage{enumitem}
@@ -27,28 +27,62 @@
   
 \section{Introduction}
 
-Support vector machines are an ML model which can be used to classify vectors in a vector space. This method can be applied to the task of classifying documents by representing each document as a vector. In this report, we choose to use a neural model, doc2vec, introduced by Mikolov and Le \cite{}, in order to generate vectors. We also [TODO] to show that the vector space produced by the doc2vec model is meaningful, by [TODO]
+Support vector machines are an ML model which can be used to classify vectors in a vector space. This method can be applied to the task of classifying documents by representing each document as a vector. In this report, I use a neural model, doc2vec, introduced by Mikolov and Le \cite{DBLP:journals/corr/LeM14}, in order to generate feature vectors. We also qualitatively show that the vector space produced by the doc2vec model is meaningful, by examining the behaviour of document embedding generation by doc2vec.
+
+I use a large corpus of 100,000 movie reviews in order to train doc2vec, as well as a smaller set of 2,000 reviews (1000 of each classification), given in the framework of an NLP course.
 
 \section{Background}
 
+In a previous report, I used a bag of n-grams representation for documents (BOW), and used an SVM to classify these feature vectors. Each document is represented by a feature-count vector $(n_1(d), \dots ,n_m(d))$, with $n_i(d)$ being the number of occurrences of $f_i$ in $d$. I also trained on a presence representation, setting $n_i(d)$ to 1 if $f_i$ appeared in $d$, and 0 otherwise.
+
 \subsection{Support Vector Machines}
+
+SVMs are supervised learning models which are used to classify feature vectors in an n-dimensional space. Training consists of finding a hyperplane which separates the two classes with the largest margin. Classification takes place by measuring the distance of feature vectors to the plane. 
 
 \subsection{Doc2Vec}
 
+Doc2Vec is an unsupervised model for learning document embeddings which can be used as feature representations. It tries to overcome two flaws in BOW - word order is not being taken into account, and semantically similar words being equidistant. Doc2Vec produces fixed-length vectors for decuments of any length. An important feature of these vectors is that they can't be directly interpreted.
 
+Doc2Vec extends word2vec \cite{DBLP:journals/corr/MikolovSCCD13} , a method of learning word embeddings. There are two doc2vec architectures, distributed bag of words (DBOW) and distributed memory (dm).
 
 \section{Method}
 
-The doc2vec implementation used was gensim \cite{gensim}.
+The doc2vec implementation used was gensim \cite{gensim}. I trained the doc2vec model on 100,000 movie reviews from the Stanford Large Movie Review Dataset \cite{maas-EtAl:2011:ACL-HLT2011}. The SVM classifier is then trained on the documents found in the dataset used by pang et al. \cite{pang2002thumbs}. To tune parameters for the doc2vec model, I use a 10\% validation set to evaluate different models, then report accuracies using 10-fold cross validation over the remaining 90\%. I employed a naïve search strategy, starting from the parameters used by Lau and Baldwin \cite{lau2016empirical}.
 
-I train the doc2vec model on 100,000 movie reviews from the Stanford Large Movie Review Dataset \cite{maas-EtAl:2011:ACL-HLT2011}. The SVM classifier is then trained on the documents found in the dataset used by pang et al. \cite{pang2002thumbs}. To tune parameters for the doc2vec model, I use a 10\% validation set to evaluate different models, then report accuracies using 10-fold cross validation over the remaining 90\%. I employed a naïve search strategy, starting from the parameters used by Lau and Baldwin \cite{lau2016empirical}.
-
-
-
-I compare the doc2vec based svm model to two baseline models, naive bayes and svm, which both use a bag of n-grams representation.
+I compare the doc2vec based SVM model to two baseline svm models using a BOW representation.
 
 \section{Results}
-\blindtext
+
+The results of the cross-validation (not using the validation set), show that the doc2vec representation is significantly better than either of the bag of words representations.
+
+\begin{table*}
+    \centering
+    \begin{tabular}{lllll}
+    \cline{1-4}
+    \multicolumn{1}{|l|}{}            & \multicolumn{1}{l|}{BOW - freq.} & \multicolumn{1}{l|}{BOW - pres.} & \multicolumn{1}{l|}{Doc2vec} &  \\ \cline{1-4}
+    \multicolumn{1}{|l|}{Doc2vec}     & \multicolumn{1}{l|}{0.014}       & \multicolumn{1}{l|}{0.002}       & \multicolumn{1}{l|}{-}       &  \\ \cline{1-4}
+    \multicolumn{1}{|l|}{BOW - pres.} & \multicolumn{1}{l|}{0.001}       & \multicolumn{1}{l|}{-}           &                              &  \\ \cline{1-3}
+    \multicolumn{1}{|l|}{BOW - freq.} & \multicolumn{1}{l|}{-}           &                                  &                              &  \\ \cline{1-2}
+                                      &                                  &                                  &                              & 
+    \end{tabular}
+    \caption{p-values, using a monte-carlo permuation test with $\alpha=0.05$}
+    \label{tab:pval-table}
+
+\end{table*}
+
+\begin{table*}
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+      & Representation  & Accuracy \\ \hline
+    A & BOW - frequency &          \\ \hline
+    B & BOW - presence  &          \\ \hline
+    C & Doc2vec         &          \\ \hline
+    \end{tabular}
+    \caption{Accuracies, using ten-fold cross validation over 1800 reviews}
+    \label{tab:acc-table}
+\end{table*}
+
 \section{Discussion}
 \blindtext
 \section{Conclusion}
