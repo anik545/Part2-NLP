@@ -2,6 +2,7 @@ import os
 import glob
 from tqdm import tqdm
 from collections import Counter
+import nltk
 
 DATA_DIR = "/home/ar899/Part2-NLP/data/aclImdb/"
 PANG_DATA_DIR = "/home/ar899/Part2-NLP/data/part1/"
@@ -27,11 +28,9 @@ def load_all_docs():
     with open(ALL_DOCS_FILE, "r") as f:
         docs = []
         for line in tqdm(f.readlines(), desc="Loading files"):
-            docs.append(line.split(' '))
-
+            docs.append(nltk.word_tokenize(line.decode("utf-8").strip("\n")))
     print("*** LOADED DOCUMENTS FOR DOC2VEC ***")
     return docs
-
 
 
 pang_folders = ['NEG', 'POS']
@@ -67,6 +66,7 @@ def get_word_counts(wordlists, presence=False):
     for l in wordlists:
         word_counts.update(l)
     return word_counts
+
 
 if __name__ == "__main__":
     load_all_pang_docs()
