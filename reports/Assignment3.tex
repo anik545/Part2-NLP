@@ -17,22 +17,14 @@
 \vspace{0.1in}
 \centerline{\large {\today}}
 \vspace{0.05in}
-\centerline{Total Word Count: 999\footnote{Using texcount}}
-\vspace{0.2in}
-
 
 
 \section*{Task 1}
 
 
-A hypothetical system would look at the key verb in the question - here, `use'. We can find `use' due to the xcomp dependency from the root. The `dep' type can then show us what the object of the verb is, here `water'. The determiner (`what') determines the type of question, and indicates we need to look for a noun and its dependents which are modifiers.
+A hypothetical system would look at the key verb in the question - here, `use'. We can find `use' due to the xcomp dependency from the root. The `dep' type can then show us what the object of the verb is, here `water'. The determiner ,`what', determines the type of question, and indicates we need to look for a noun and its dependents which are modifiers.
 
-The question \textit{What sort of water are you advised to use?} has the answer \textit{distilled water}, but the question answering system described above would likely return two possible answers - tap water \textbf{and} distilled water. In both relevant sentences, `water' is dependent on a form of the verb `use' with the direct object (dobj) type. We can take advantage of morphology \cite{} here to detect that `using' is a form of `use'. Both `distilled' and `tap' are dependents and modifiers of 'water' (amod/compound), as required by the question. To choose a single answer, a simple heuristic is simply choosing the latter. However, we could also look at the other dependents of `use', i.e. `last longer', classifying as a positive phrase, making this sentence more likely to contain the correct answer. 
-
-% TODO: cite morphology lecture above
-
-Figure \ref{fig:deps-q1} shows the dependency parses of the relevant sentences.
-
+The question \textit{What sort of water are you advised to use?} has the answer \textit{distilled water}, but the question answering system described above would likely return two possible answers - tap water \textbf{and} distilled water. In both relevant sentences, `water' is dependent on a form of the verb `use' with the direct object (dobj) type. We can take advantage of morphology \cite{NLP_lec2} here to detect that `using' is a form of `use'. Both `distilled' and `tap' are dependents and modifiers of 'water' (amod/compound), as required by the question. To choose a single answer, a simple heuristic is simply choosing the latter. However, we could also look at the other dependents of `use', i.e. `last longer', classifying as a positive phrase, making this sentence more likely to contain the correct answer. 
 
 The second question is more difficult, since relevant words in the question are not directly present in the text, e.g. `pay extra' in the question relates to `supplementary charge' in the text. This requires us to find a way to find similar words and phrases, i.e. calculate semantic similarity. Also, since we have an question that is not a full sentence (by the lack of the 'punct' type), we can compose it with each answer and check for truth.
 
@@ -78,7 +70,7 @@ From the dependency parse of the question, we can see that `pay' is the relevant
     \begin{deptext}[column sep=1em]
         However \&,\& it\& will\& last\& longer\& if\& you\& use\& distilled\& water\&. \\
     \end{deptext}
-    \deproot[edge unit distance=3ex]{4}{ROOT}
+    \deproot[edge unit distance=4ex]{4}{ROOT}
     \depedge{4}{1}{advmod}
     \depedge{4}{2}{punct}
     \depedge{4}{3}{nsubj}
@@ -99,7 +91,7 @@ From the dependency parse of the question, we can see that `pay' is the relevant
 \centering
 \begin{dependency}
     \begin{deptext}[column sep=1em]
-        It \& may\& be\& necessary\& to\& pay\& extra\& for \\
+        It \& may\& be\& necessary\& to\& pay\& extra\& for \& \dots \\
     \end{deptext}
     \deproot[edge unit distance=3ex]{4}{ROOT}
     \depedge{4}{1}{nsubj}
@@ -111,37 +103,52 @@ From the dependency parse of the question, we can see that `pay' is the relevant
     \depedge{6}{7}{dobj}
     \depedge{6}{8}{nmod}
 \end{dependency}
-\caption{dependency parses relating to question 12 of text 2}
+\caption{Dependency parse relating to question 12 of text 2}
 \label{fig:deps-q2_2}
 
 \end{figure}
 
+\textit{Word count: 322} \footnote{All wordcounts calculated using texcount}
 
 \section*{Task 2}
 
-Task 1 refers to semantic similarity measures, which need to be used when words occur in questions that don't occur in the text. e.g. `drip'. I discuss two methods here, wordnet and word2vec, and show that they are able to find that `droplet' is the most similar word to `drip', and so the answer to the question lies in the sentence conatining the word `droplet'. Being able to derive an answer to the question from this is more difficult, and requires chains of reasoning (task 3).
+Task 1 refers to semantic similarity measures, which need to be used when words occur in questions that don't occur in the text. e.g. `drip'. I discuss two methods here, wordnet and word2vec, and show that they find `droplet' is the most similar word to `drip', and so the answer to the question lies in the sentence conatining the word `droplet'. Being able to derive an answer from this is more difficult, and requires chains of reasoning (task 3).
 
-Wordnet is a large database of english words grouped into `synsets', which represent distinct concepts. These synsets are linked by lexical relations. The result is a large network from which related words can be obtained. To use it here, we must first carry out POS tagging \cite{NLP_lec2}, since wordnet uses POS information to disambiguate words. The word `drip' as a verb belongs to 2 synsets, and by traversing derivationally related forms of the words in these synsets, we arrive at droplet in 2 steps, which is the closest word in the text. Shorter chains  are one metric for similarity, but other similarity metrics can be employed (Liu et al. 2015) \cite{wn_sim}.
+Wordnet is a large database of english words grouped into `synsets', which represent distinct concepts. These synsets are linked by lexical relations\cite{nlp_lec7}. The result is a large network from which related words can be obtained. To use it here, we must first carry out POS tagging \cite{NLP_lec2} to disambiguate words. The word `drip' as a verb belongs to 2 synsets, and by traversing derivationally related forms of the words in these synsets, we arrive at droplet in 2 steps, which is the closest word in the text. Length of chains is one metric for similarity, but other similarity metrics can be used (Liu et al. 2015) \cite{wn_sim}.
 
-Word2Vec is another method by which similar words can be found. Word2vec represents words as n-dimensional vectors which are not directly interpretable, using a neural model to learn these `word embeddings' \cite{nlp_lec??}. This method can also be extended to phrases in a meaningful way \cite{mikolov2013distributed}, enabling us to detect similarity between phrases. Using Word2Vec, we can convert each word found in the text to a word embedding and calculate the cosine similarity - carrying this out on the text shows that the most similar word is 'droplet' (0.390).
+Word2Vec\cite{DBLP:journals/corr/LeM14} is another method by which similar words can be found. Word2vec represents words as n-dimensional vectors which are not directly interpretable, using a neural model to learn these `word embeddings' \cite{nlp_lec8}. This method can also be extended to phrases in a meaningful way \cite{mikolov2013distributed}, enabling us to detect similarity between phrases. Using Word2Vec, we can convert each word found in the text to a word embedding and calculate the cosine similarity - carrying this out on the text shows that the most similar word is 'droplet' (0.390).
 
 Looking at question 12 from text 2, our system must be able to find similarity between the `pay extra' and `supplementary charge', as well as `private facilities' and `bathroom'. This requires the use of collocations, supported by both word2vec and wordnet - however, neither the pre-trained word2vec embeddings nor wordnet contain these phrases as collocations. In the case of word2vec, more training may overcome this. However, both show similarities between `pay' and `charge'.
 
-% TODO: cite collocations lecture
+\textit{Word count: 344}
 
 \section*{Task 3}
 
-To answer \textit{Which misuse of the iron could result in a person getting hurt?}, and example of an informal reasoning chain is:
+To answer question 5, an example of an informal reasoning chain is:
 
-\begin{enumerate}
-    \item Removing creases from implies using the iron
-    \item Using the iron implies the iron is hot
-    \item clothes worn by a person are in direct touch with skin
+\begin{itemize}
+    \item Removing creases implies using the iron
+    \item An iron is hot when being used
+    \item Clothes worn by a person are in direct touch with skin
     \item Using an iron on these clothes means the iron is in contact with skin
     \item Skin can burn if touched by a hot surface
     \item So the skin is at risk of being burned
-    \item Burning is harmful
-\end{enumerate}
+    \item Burning causes hurt
+\end{itemize}
+
+This chain ends with the answer corresponding to the sentence \textit{remove creases from an item of clothing that is being worn}.
+
+This reasoning requires a large amount of knowledge which cannot be gained directly from the text, as well as interpreting parts of the question - e.g. `misuse' should be similar to `do not attempt'. Some parts of the first two tasks could be used for this, for example, understanding that we are looking for the object of the verb misuse suggests we should look at the dependents of 'misuse' (Task 1). Since the word is not directly present, we must use a semantic similarity measure (Task 2). The difficulty now comes from automating the reasoning procedure. 
+
+We could use compositional semantics and a logical representation for this. The steps above as well as the question could be represented in first order logic, with inference being performed to find a `proof' of the query \cite{NLP_lec6}.
+
+However, this would require a very large knowledge base, including general knowledge from outside the data given - for example, knowing that skin burns if touched by something hot is something that can't be learned by just looking at the text in question.
+
+While there are systems that use this technique for certain domains, such as logAnswer \cite{furbach2008loganswer} or ASP \cite{ASP}, it would intractable to build a large enough knowledge base that would be able to answer general queries.
+
+Overall, a rule-based system built to answer questions of this type and produce a reasoning chain would be possible, but is unlikely to be robust to different types of texts or questions.
+
+\textit{Word count: 332}
 
 \bibliography{refs}
 
