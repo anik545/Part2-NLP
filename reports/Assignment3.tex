@@ -22,13 +22,13 @@
 \section*{Task 1}
 
 
-A hypothetical system would look at the key verb in the question - here, `use'. We can find `use' due to the xcomp dependency from the root. The `dep' type can then show us what the object of the verb is, here `water'. The determiner ,`what', determines the type of question, and indicates we need to look for a noun and its dependents which are modifiers.
+A hypothetical system would look at the key verb in the question - here, `use'. We can find `use' due to the \texttt{xcomp} dependency from the root. The `dep' type can then show us what the object of the verb is, here `water'. The determiner ,`what', determines the type of question, and indicates we need to look for a noun and its dependents which are modifiers (\texttt{compound}, \texttt{amod}, etc.).
 
-The question \textit{What sort of water are you advised to use?} has the answer \textit{distilled water}, but the question answering system described above would likely return two possible answers - tap water \textbf{and} distilled water. In both relevant sentences, `water' is dependent on a form of the verb `use' with the direct object (dobj) type. We can take advantage of morphology \cite{NLP_lec2} here to detect that `using' is a form of `use'. Both `distilled' and `tap' are dependents and modifiers of 'water' (amod/compound), as required by the question. To choose a single answer, a simple heuristic is simply choosing the latter. However, we could also look at the other dependents of `use', i.e. `last longer', classifying as a positive phrase, making this sentence more likely to contain the correct answer. 
+The question \textit{What sort of water are you advised to use?} has the answer \textit{distilled water}, but the question answering system described above would likely return two possible answers - tap water \textbf{and} distilled water. In both relevant sentences, `water' is dependent on a form of the verb `use' with the direct object (\texttt{dobj}) type. We can take advantage of morphology \cite{NLP_lec2} here to detect that `using' is a form of `use'. Both `distilled' and `tap' are dependents and modifiers of 'water' (amod/compound), as required by the question. To choose a single answer, a simple heuristic is simply choosing the latter. However, we could also look at the other dependents of `use', i.e. `last longer', classifying as a positive phrase, making this sentence more likely to contain the correct answer.
 
 The second question is more difficult, since relevant words in the question are not directly present in the text, e.g. `pay extra' in the question relates to `supplementary charge' in the text. This requires us to find a way to find similar words and phrases, i.e. calculate semantic similarity. Also, since we have an question that is not a full sentence (by the lack of the 'punct' type), we can compose it with each answer and check for truth.
 
-From the dependency parse of the question, we can see that `pay' is the relevant verb (via xcomp from root) and `bathroom' as the object. Since the word bathroom does not appear in the text, we can use a semantic similarity measure to look for the most similar words.
+From the dependency parse of the question, we can see that `pay' is the relevant verb (via \texttt{xcomp} from the root) and `bathroom' as the object. Since the word bathroom does not appear in the text, we can use a semantic similarity measure to look for the most similar words.
 
 \begin{figure}
 \centering
@@ -144,7 +144,7 @@ We could use compositional semantics and a logical representation for this. The 
 
 However, this would require a very large knowledge base, including general knowledge from outside the data given - for example, knowing that skin burns if touched by something hot is something that can't be learned by just looking at the text in question.
 
-While there are systems that use this technique for certain domains, such as logAnswer \cite{furbach2008loganswer} or ASP \cite{ASP}, it would intractable to build a large enough knowledge base that would be able to answer general queries.
+While there are systems that use this technique for certain domains, such as logAnswer \cite{furbach2008loganswer} or ASP \cite{ASP}, it would be intractable to build a large enough knowledge base that would be able to answer general queries.
 
 Overall, a rule-based system built to answer questions of this type and produce a reasoning chain would be possible, but is unlikely to be robust to different types of texts or questions.
 
